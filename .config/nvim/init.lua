@@ -627,6 +627,7 @@ require("lazy").setup({
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				html = {},
 				cssls = {},
+				biome = {},
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
@@ -715,6 +716,10 @@ require("lazy").setup({
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
 				-- javascript = { { "prettierd", "prettier" } },
+
+				-- --BIOME DOES NOT SUPPORT EDITORCONFIG DO NOT USE YET
+				-- javascript = { { "biome" } }, --MARLENE added biome
+				-- typescript = { { "biome" } }, --MARLENE added biome for ts
 			},
 		},
 	},
@@ -991,7 +996,7 @@ require("lazy").setup({
 			max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
 			min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
 			line_numbers = true,
-			multiline_threshold = 3, -- Maximum number of lines to show for a single context --MARLENE: default was 20
+			multiline_threshold = 2, -- Maximum number of lines to show for a single context --MARLENE: default was 20
 			trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
 			mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
 			-- Separator between context and content. Should be a single character string, like '-'.
