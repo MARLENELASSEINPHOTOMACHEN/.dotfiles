@@ -1007,6 +1007,27 @@ require("lazy").setup({
 			on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 		},
 	},
+	{
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup({
+				view_options = {
+					-- Show files and directories that start with "."
+					show_hidden = false,
+				},
+				keymaps = {
+					["<C-h>"] = false,
+					["<M-h"] = "actions.select_split",
+				},
+			})
+			-- Open parent directory in current window
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+			-- Open parent directory in floating window
+			vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Open parent directory floating" })
+		end,
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
