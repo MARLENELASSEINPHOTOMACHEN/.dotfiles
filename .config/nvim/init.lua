@@ -912,6 +912,7 @@ require("lazy").setup({
 				"css",
 				"typescript",
 				"javascript",
+				"jsdoc",
 				"lua",
 				"luadoc",
 				"markdown",
