@@ -627,7 +627,8 @@ require("lazy").setup({
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				html = {},
 				cssls = {},
-				biome = {},
+				-- biome = {}, --MARLENE: not doing anything atm
+				svelte = {}, --MARLENE: ensure :TSInstall svelte typescript javascript css html jsdoc --are installed
 				elixirls = {},
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -718,7 +719,7 @@ require("lazy").setup({
 				-- is found.
 				-- javascript = { { "prettierd", "prettier" } },
 
-				-- --BIOME DOES NOT SUPPORT EDITORCONFIG DO NOT USE YET
+				-- MARLENE: BIOME DOES NOT SUPPORT EDITORCONFIG DO NOT USE YET
 				-- javascript = { { "biome" } }, --MARLENE added biome
 				-- typescript = { { "biome" } }, --MARLENE added biome for ts
 			},
@@ -903,7 +904,20 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
+			ensure_installed = { --MARLENE added css, ts, js
+				"bash",
+				"c",
+				"diff",
+				"html",
+				"css",
+				"typescript",
+				"javascript",
+				"lua",
+				"luadoc",
+				"markdown",
+				"vim",
+				"vimdoc",
+			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {
@@ -1011,6 +1025,8 @@ require("lazy").setup({
 		"stevearc/oil.nvim",
 		config = function()
 			require("oil").setup({
+				-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+				delete_to_trash = true,
 				view_options = {
 					-- Show files and directories that start with "."
 					show_hidden = false,
