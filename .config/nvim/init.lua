@@ -630,6 +630,8 @@ require("lazy").setup({
 				-- biome = {}, --MARLENE: not doing anything atm
 				svelte = {}, --MARLENE: ensure :TSInstall svelte typescript javascript css html jsdoc --are installed
 				elixirls = {},
+
+				prettierd = {}, --MARLENE: replacement for biome for the time being
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
