@@ -717,7 +717,8 @@ require("lazy").setup({
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
-				-- javascript = { { "prettierd", "prettier" } },
+				javascript = { { "prettierd", "prettier" } },
+				html = { { "prettierd", "prettier" } },
 
 				-- MARLENE: BIOME DOES NOT SUPPORT EDITORCONFIG DO NOT USE YET
 				-- javascript = { { "biome" } }, --MARLENE added biome
@@ -842,7 +843,8 @@ require("lazy").setup({
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"MARLENELASSEINPHOTOMACHEN/seoul256.nvim",
+		-- "MARLENELASSEINPHOTOMACHEN/seoul256.nvim",
+		"junegunn/seoul256.vim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		init = function()
 			-- Load the colorscheme here.
