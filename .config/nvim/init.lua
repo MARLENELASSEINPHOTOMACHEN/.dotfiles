@@ -718,7 +718,8 @@ require("lazy").setup({
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
 				javascript = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
+
+				html = { { "prettierd", "prettier" } }, --MARELENE
 
 				-- MARLENE: BIOME DOES NOT SUPPORT EDITORCONFIG DO NOT USE YET
 				-- javascript = { { "biome" } }, --MARLENE added biome
