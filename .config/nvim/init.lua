@@ -721,6 +721,7 @@ require("lazy").setup({
 				-- is found.
 				javascript = { { "prettierd", "prettier" } },
 
+				typescript = { { "prettierd", "prettier" } }, --MARLENE both until biomw ofc
 				html = { { "prettierd", "prettier" } }, --MARELENE
 
 				-- MARLENE: BIOME DOES NOT SUPPORT EDITORCONFIG DO NOT USE YET
