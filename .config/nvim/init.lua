@@ -661,6 +661,7 @@ require("lazy").setup(
 								},
 								-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 								-- diagnostics = { disable = { 'missing-fields' } },
+								diagnostics = { globals = { "vim" } }, --MARLENE fix for missing vim global
 							},
 						},
 					},
@@ -867,7 +868,7 @@ require("lazy").setup(
 				vim.cmd.colorscheme("seoul256-light")
 
 				-- You can configure highlights by doing something like:
-				vim.cmd.hi("Comment gui=none")
+				-- vim.cmd.hi("Comment gui=none")
 			end,
 		},
 
