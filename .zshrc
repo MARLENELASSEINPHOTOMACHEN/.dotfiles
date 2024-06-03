@@ -1,9 +1,9 @@
-# from Stackoverflow
-autoload -Uz compinit
-compinit -i
+#enable completion
+autoload -Uz compinit && compinit
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
+
 #python map to python3
 alias python=/usr/bin/python3
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
@@ -16,3 +16,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 #MARLENE:
 alias :q='exit'
+
