@@ -1019,14 +1019,36 @@ require("lazy").setup(
 		{ -- Set lualine as statusline
 			"nvim-lualine/lualine.nvim",
 			-- See `:help lualine.txt`
-			opts = {
-				options = {
-					icons_enabled = vim.g.have_nerd_font,
-					theme = "auto",
-					component_separators = "|",
-					section_separators = "",
-				},
-			},
+			config = function()
+				local seoul256_light = require("lualine.themes.seoul256")
+
+				-- Change the background of lualine_c section for normal mode
+				-- seoul256_light.normal.c.bg = "#FFBFBD" krank geiles corall
+				seoul256_light.normal.c.bg = "#FFFFDF"
+				seoul256_light.normal.b.bg = "#E09B99"
+				seoul256_light.visual.b.bg = "#BCDDBD"
+				seoul256_light.visual.b.fg = "#808080"
+				seoul256_light.replace.b.bg = "#BCDDBD"
+				seoul256_light.replace.b.fg = "#808080"
+
+				seoul256_light.inactive.c.bg = "#757575"
+				seoul256_light.inactive.c.fg = "#D9D9D9"
+				--löppt: vielleicht in variable thx
+				seoul256_light.normal.a.fg = "#D9D9D9"
+				seoul256_light.visual.a.fg = "#D9D9D9"
+				seoul256_light.insert.a.fg = "#D9D9D9"
+				seoul256_light.replace.a.fg = "#D9D9D9"
+
+				require("lualine").setup({
+					options = {
+						icons_enabled = vim.g.have_nerd_font,
+						-- theme = "auto",
+						theme = seoul256_light,
+						component_separators = "|",
+						section_separators = "",
+					},
+				})
+			end,
 		},
 		{ --add Sticky Context line to the top
 			"nvim-treesitter/nvim-treesitter-context",
