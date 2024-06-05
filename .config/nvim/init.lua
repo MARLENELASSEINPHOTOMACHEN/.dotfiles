@@ -1032,8 +1032,8 @@ require("lazy").setup(
 				seoul256_light.replace.b.bg = "#BCDDBD"
 				seoul256_light.replace.b.fg = "#808080"
 
-				seoul256_light.inactive.c.bg = "#757575"
-				seoul256_light.inactive.c.fg = "#D9D9D9"
+				seoul256_light.inactive.c.bg = "#c6c6c6"
+				seoul256_light.inactive.c.fg = "#808080"
 				--löppt: vielleicht in variable thx
 				seoul256_light.normal.a.fg = "#D9D9D9"
 				seoul256_light.visual.a.fg = "#D9D9D9"
