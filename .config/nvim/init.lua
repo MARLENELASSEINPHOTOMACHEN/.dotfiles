@@ -344,6 +344,7 @@ require("lazy").setup(
 					["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
 					["<leader>t"] = { name = "[T]oggle", _ = "which_key_ignore" },
 					["<leader>h"] = { name = "Git [H]unk", _ = "which_key_ignore" },
+					["<leader>f"] = { name = "Harpoon [f]ishing", _ = "which_key_ignore" }, --MARLENE harpoon keymaps
 				})
 				-- visual mode
 				require("which-key").register({
@@ -704,7 +705,7 @@ require("lazy").setup(
 			lazy = false,
 			keys = {
 				{
-					"<leader>f",
+					"<leader>F", --MARLENE changed to capital F to avoid conflict with Harpoon keys
 					function()
 						require("conform").format({ async = true, lsp_fallback = true })
 					end,
@@ -1118,6 +1119,28 @@ require("lazy").setup(
 			end,
 			-- Optional dependencies
 			dependencies = { "nvim-tree/nvim-web-devicons" },
+		},
+		{
+			"ThePrimeagen/harpoon",
+			branch = "harpoon2",
+			config = function()
+				local harpoon = require("harpoon")
+				harpoon:setup()
+
+				vim.keymap.set("n", "<leader>fa", function()
+					harpoon:list():add()
+				end, { desc = "[a]dd [f]ish" })
+				vim.keymap.set("n", "<leader>ff", function()
+					harpoon.ui:toggle_quick_menu(harpoon:list())
+				end, { desc = "[f]ished [files]" })
+
+				-- Set <space>1..<space>5 be my shortcuts to moving to the files
+				for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
+					vim.keymap.set("n", string.format("<leader>%d", idx), function()
+						harpoon:list():select(idx)
+					end, { desc = string.format("fished file no. %d", idx) })
+				end
+			end,
 		},
 	}, -- NOTE: end of custom plugins
 	{
