@@ -1120,7 +1120,7 @@ require("lazy").setup(
 			-- Optional dependencies
 			dependencies = { "nvim-tree/nvim-web-devicons" },
 		},
-		{
+		{ -- Quick Access to file
 			"ThePrimeagen/harpoon",
 			branch = "harpoon2",
 			config = function()
@@ -1147,6 +1147,7 @@ require("lazy").setup(
 				end
 			end,
 		},
+		{ "rose-pine/neovim", name = "rose-pine" },
 	}, -- NOTE: end of custom plugins
 	{
 		ui = {
