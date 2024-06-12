@@ -1133,7 +1133,12 @@ require("lazy").setup(
 				vim.keymap.set("n", "<leader>ff", function()
 					harpoon.ui:toggle_quick_menu(harpoon:list())
 				end, { desc = "[f]ished [files]" })
-
+				vim.keymap.set("n", "<leader>fp", function()
+					harpoon:list():prev()
+				end, { desc = "[f]ish [p]revious" })
+				vim.keymap.set("n", "<leader>fn", function()
+					harpoon:list():next()
+				end, { desc = "[f]ish [n]ext" })
 				-- Set <space>1..<space>5 be my shortcuts to moving to the files
 				for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
 					vim.keymap.set("n", string.format("<leader>%d", idx), function()
