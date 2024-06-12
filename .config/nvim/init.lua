@@ -1027,13 +1027,14 @@ require("lazy").setup(
 				-- seoul256_light.normal.c.bg = "#FFBFBD" krank geiles corall
 				seoul256_light.normal.c.bg = "#FFFFDF"
 				seoul256_light.normal.b.bg = "#E09B99"
+				seoul256_light.insert.b.bg = "#E09B99"
 				seoul256_light.visual.b.bg = "#BCDDBD"
 				seoul256_light.visual.b.fg = "#808080"
 				seoul256_light.replace.b.bg = "#BCDDBD"
 				seoul256_light.replace.b.fg = "#808080"
 
 				seoul256_light.inactive.c.bg = "#c6c6c6"
-				seoul256_light.inactive.c.fg = "#808080"
+				seoul256_light.inactive.c.fg = "#4B4B4B"
 				--löppt: vielleicht in variable thx
 				seoul256_light.normal.a.fg = "#D9D9D9"
 				seoul256_light.visual.a.fg = "#D9D9D9"
