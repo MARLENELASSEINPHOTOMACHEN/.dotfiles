@@ -705,7 +705,7 @@ require("lazy").setup(
 			lazy = false,
 			keys = {
 				{
-					"<leader>F", --MARLENE changed to capital F to avoid conflict with Harpoon keys
+					"<leader>cf", --MARLENE changed match lazyvim and to avoid conflict with Harpoon keys
 					function()
 						require("conform").format({ async = true, lsp_fallback = true })
 					end,
@@ -870,6 +870,23 @@ require("lazy").setup(
 
 				-- You can configure highlights by doing something like:
 				-- vim.cmd.hi("Comment gui=none")
+
+				-- -- MARLENE: for vim-notify
+				-- vim.cmd.hi("NotifyERRORBorder guifg=#E12672")
+				-- vim.cmd.hi("NotifyWARNBorder guifg=#4B4B4B")
+				-- vim.cmd.hi("NotifyINFOBorder guifg=#757575")
+				-- vim.cmd.hi("NotifyDEBUGBorder guifg=#757575")
+				-- vim.cmd.hi("NotifyTRACEBorder guifg=#252525")
+				-- vim.cmd.hi("NotifyERRORIcon guifg=#E12672")
+				-- vim.cmd.hi("NotifyWARNIcon guifg=#BE9873")
+				-- vim.cmd.hi("NotifyINFOIcon guifg=#E09B99")
+				-- vim.cmd.hi("NotifyDEBUGIcon guifg=#757575")
+				-- vim.cmd.hi("NotifyTRACEIcon guifg=#252525")
+				-- vim.cmd.hi("NotifyERRORTitle guifg=#E12672")
+				-- vim.cmd.hi("NotifyWARNTitle guifg=#BE9873")
+				-- vim.cmd.hi("NotifyINFOTitle guifg=#98BC99")
+				-- vim.cmd.hi("NotifyDEBUGTitle guifg=#757575")
+				-- vim.cmd.hi("NotifyTRACETitle guifg=#252525")
 			end,
 		},
 
@@ -1190,7 +1207,6 @@ require("lazy").setup(
 		-- 		"rcarriga/nvim-notify",
 		-- 	},
 		-- },
-		--
 	}, -- NOTE: end of custom plugins
 	{
 		ui = {
