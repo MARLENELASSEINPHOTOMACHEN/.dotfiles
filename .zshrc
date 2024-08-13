@@ -8,6 +8,9 @@ autoload -Uz compinit && compinit
 alias python=/usr/bin/python3
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 
+#hot reload air for go
+alias air='~/go/bin/air'
+
 #dotiles git alias
 alias config='/usr/bin/git --git-dir=/Users/marian/.dotfiles/ --work-tree=/Users/marian'
 #neovim
