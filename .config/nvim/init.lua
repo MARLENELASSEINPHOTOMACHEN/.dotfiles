@@ -990,6 +990,7 @@ require("lazy").setup(
 				--  Check out: https://github.com/echasnovski/mini.nvim
 
 				--  MARLENE: more
+				require("mini.pairs").setup()
 				-- Animate vim motions
 				local mouse_scrolled = false
 				for _, scroll in ipairs({ "Up", "Down" }) do
@@ -1086,19 +1087,6 @@ require("lazy").setup(
 		-- MARLENE PLUGINS:
 		-- NOTE: add own plugins below - keep above as clean as possible
 		{ "rose-pine/neovim", name = "rose-pine" }, -- Colorscheme
-		{ -- Auto closing brackets etc - replace with mini.pairs maybe
-			"windwp/nvim-autopairs",
-			event = "InsertEnter",
-			-- Optional dependency
-			dependencies = { "hrsh7th/nvim-cmp" },
-			config = function()
-				require("nvim-autopairs").setup({})
-				-- If you want to automatically add `(` after selecting a function or method
-				local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-				local cmp = require("cmp")
-				cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-			end,
-		},
 
 		{ -- Add indentation guides even on blank lines
 			"lukas-reineke/indent-blankline.nvim",
@@ -1226,12 +1214,16 @@ require("lazy").setup(
 				end
 			end,
 		},
-		{
+		{ --markdown preview in files
 			"MeanderingProgrammer/render-markdown.nvim",
 			opts = {},
 			dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
 			-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
 			-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		},
+		{ --auto closing, renaming html tags
+			"windwp/nvim-ts-autotag",
+			opts = {},
 		},
 		-- {
 		-- 	"folke/noice.nvim",
