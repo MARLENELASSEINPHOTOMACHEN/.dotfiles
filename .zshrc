@@ -8,12 +8,16 @@ autoload -Uz compinit && compinit
 alias python=/usr/bin/python3
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 
+#path to zig
+export PATH=$PATH:~/zig/zig-macos-aarch64-0.12.0
+
 #hot reload air for go
 alias air='~/go/bin/air'
 
 #dotiles git alias
 alias config='/usr/bin/git --git-dir=/Users/marian/.dotfiles/ --work-tree=/Users/marian'
-#neovim
+
+#nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
