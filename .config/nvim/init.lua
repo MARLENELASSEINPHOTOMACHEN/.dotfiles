@@ -331,6 +331,8 @@ require("lazy").setup(
 			"folke/which-key.nvim",
 			event = "VimEnter", -- Sets the loading event to 'VimEnter'
 			opts = {
+				---@type false | "classic" | "modern" | "helix"
+				preset = "modern",
 				icons = {
 					-- set icon mappings to true if you have a Nerd Font
 					mappings = vim.g.have_nerd_font,
@@ -991,6 +993,7 @@ require("lazy").setup(
 
 				--  MARLENE: more
 				require("mini.pairs").setup()
+				--
 				-- Animate vim motions
 				local mouse_scrolled = false
 				for _, scroll in ipairs({ "Up", "Down" }) do
