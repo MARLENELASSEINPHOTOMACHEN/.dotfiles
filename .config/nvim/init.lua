@@ -993,6 +993,8 @@ require("lazy").setup(
 
 				--  MARLENE: more
 				require("mini.pairs").setup()
+
+				require("mini.move").setup()
 				--
 				-- Animate vim motions
 				local mouse_scrolled = false
