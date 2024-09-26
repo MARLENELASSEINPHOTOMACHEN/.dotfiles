@@ -1240,6 +1240,32 @@ require("lazy").setup(
 			"windwp/nvim-ts-autotag",
 			opts = {},
 		},
+		{ --screenshots of code
+			-- TODO: still "<Esc><cmd>CodeSnap<cr>" is a workaround for <Esc><cmd>CodeSnap<cr> delete when fixed
+			"mistricky/codesnap.nvim",
+			build = "make",
+			keys = {
+				{
+					"<leader>cc",
+					"<Esc><cmd>CodeSnap<cr>",
+					mode = { "x", "v" },
+					desc = "Save selected code snapshot into clipboard",
+				},
+				{
+					"<leader>cs",
+					"<Esc><cmd>CodeSnapSave<cr>",
+					mode = { "x", "v" },
+					desc = "Save selected code snapshot in ~/Pictures",
+				},
+			},
+			opts = {
+				code_font_family = "RedHatMono Nerd Font",
+				save_path = "~/Pictures",
+				has_breadcrumbs = true,
+				watermark = "",
+				bg_theme = "summer",
+			},
+		},
 		-- {
 		-- 	"folke/noice.nvim",
 		-- 	event = "VeryLazy",
