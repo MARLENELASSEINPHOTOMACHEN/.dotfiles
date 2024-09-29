@@ -282,22 +282,22 @@ require("lazy").setup(
 
 					-- Actions
 					-- visual mode
-					map("v", "<leader>hs", function()
+					map("v", "<leader>ghs", function()
 						gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 					end, { desc = "stage git hunk" })
-					map("v", "<leader>hr", function()
+					map("v", "<leader>ghr", function()
 						gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 					end, { desc = "reset git hunk" })
 					-- normal mode
-					map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "git [s]tage hunk" })
-					map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "git [r]eset hunk" })
-					map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "git [S]tage buffer" })
-					map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "git [u]ndo stage hunk" })
-					map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "git [R]eset buffer" })
-					map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
-					map("n", "<leader>hb", gitsigns.blame_line, { desc = "git [b]lame line" })
-					map("n", "<leader>hd", gitsigns.diffthis, { desc = "git [d]iff against index" })
-					map("n", "<leader>hD", function()
+					map("n", "<leader>ghs", gitsigns.stage_hunk, { desc = "git [s]tage hunk" })
+					map("n", "<leader>ghr", gitsigns.reset_hunk, { desc = "git [r]eset hunk" })
+					map("n", "<leader>ghS", gitsigns.stage_buffer, { desc = "git [S]tage buffer" })
+					map("n", "<leader>ghu", gitsigns.undo_stage_hunk, { desc = "git [u]ndo stage hunk" })
+					map("n", "<leader>ghR", gitsigns.reset_buffer, { desc = "git [R]eset buffer" })
+					map("n", "<leader>ghp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
+					map("n", "<leader>ghb", gitsigns.blame_line, { desc = "git [b]lame line" })
+					map("n", "<leader>ghd", gitsigns.diffthis, { desc = "git [d]iff against index" })
+					map("n", "<leader>ghD", function()
 						gitsigns.diffthis("@")
 					end, { desc = "git [D]iff against last commit" })
 					-- Toggles
@@ -378,8 +378,8 @@ require("lazy").setup(
 					{ "<leader>s", group = "[S]earch" },
 					{ "<leader>w", group = "[W]orkspace" },
 					{ "<leader>t", group = "[T]oggle" },
-					{ "<leader>f", group = "Harpoon [f]ishing" }, --MARLENE harpoon keymaps
-					{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+					{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
+					{ "<leader>gh", group = "[h]unks" },
 				},
 			},
 		},
@@ -1209,23 +1209,17 @@ require("lazy").setup(
 					},
 				})
 
-				vim.keymap.set("n", "<leader>fa", function()
+				vim.keymap.set("n", "<leader>H", function()
 					harpoon:list():add()
-				end, { desc = "[a]dd [f]ish" })
-				vim.keymap.set("n", "<leader>ff", function()
+				end, { desc = "[H]arpoon file" })
+				vim.keymap.set("n", "<leader>h", function()
 					harpoon.ui:toggle_quick_menu(harpoon:list())
-				end, { desc = "[f]ished [files]" })
-				vim.keymap.set("n", "<leader>fp", function()
-					harpoon:list():prev()
-				end, { desc = "[f]ish [p]revious" })
-				vim.keymap.set("n", "<leader>fn", function()
-					harpoon:list():next()
-				end, { desc = "[f]ish [n]ext" })
+				end, { desc = "Harpoon Quick Menu" })
 				-- Set <space>1..<space>5 be my shortcuts to moving to the files
 				for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
 					vim.keymap.set("n", string.format("<leader>%d", idx), function()
 						harpoon:list():select(idx)
-					end, { desc = string.format("fished file no. %d", idx) })
+					end, { desc = string.format("Harpoon file no. %d", idx) })
 				end
 			end,
 		},
