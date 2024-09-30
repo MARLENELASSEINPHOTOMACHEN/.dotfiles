@@ -467,7 +467,7 @@ require("lazy").setup(
 				vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 				vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 				vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-				vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+				vim.keymap.set("n", "<leader>sR", builtin.resume, { desc = "[S]earch [R]esume" })
 				vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 				vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
@@ -1258,6 +1258,28 @@ require("lazy").setup(
 				has_breadcrumbs = true,
 				watermark = "",
 				bg_theme = "summer",
+			},
+		},
+		{ -- search and replace
+			"MagicDuck/grug-far.nvim",
+			opts = { headerMaxWidth = 80 },
+			cmd = "GrugFar",
+			keys = {
+				{
+					"<leader>sr",
+					function()
+						local grug = require("grug-far")
+						local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+						grug.open({
+							transient = true,
+							prefills = {
+								filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+							},
+						})
+					end,
+					mode = { "n", "v" },
+					desc = "[S]earch and [R]eplace",
+				},
 			},
 		},
 		-- {
