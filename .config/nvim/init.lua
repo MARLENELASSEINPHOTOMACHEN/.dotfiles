@@ -1258,6 +1258,8 @@ require("lazy").setup(
 				has_breadcrumbs = true,
 				watermark = "",
 				bg_theme = "summer",
+				bg_x_padding = 61,
+				bg_y_padding = 41,
 			},
 		},
 		{ -- search and replace
