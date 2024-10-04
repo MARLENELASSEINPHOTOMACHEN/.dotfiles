@@ -1243,13 +1243,13 @@ require("lazy").setup(
 					"<leader>cc",
 					"<Esc><cmd>CodeSnap<cr>",
 					mode = { "x", "v" },
-					desc = "Save selected code snapshot into clipboard",
+					desc = "Save selected [c]ode snapshot into [c]lipboard",
 				},
 				{
 					"<leader>cs",
 					"<Esc><cmd>CodeSnapSave<cr>",
 					mode = { "x", "v" },
-					desc = "Save selected code snapshot in ~/Pictures",
+					desc = "[S]ave selected [c]ode snapshot in ~/Pictures",
 				},
 			},
 			opts = {
