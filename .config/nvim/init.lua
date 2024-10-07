@@ -683,7 +683,7 @@ require("lazy").setup(
 					html = {},
 					cssls = {},
 					-- biome = {}, --MARLENE: not doing anything atm
-					svelte = {}, --MARLENE: ensure :TSInstall svelte typescript javascript css html jsdoc --are installed
+					-- svelte = {}, --MARLENE: ensure :TSInstall svelte typescript javascript css html jsdoc --are installed
 					-- elixirls = {}, --MARLENE
 
 					prettierd = {}, --MARLENE: replacement for biome for the time being
