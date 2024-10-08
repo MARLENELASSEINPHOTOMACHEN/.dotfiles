@@ -17,6 +17,9 @@ alias air='~/go/bin/air'
 #dotiles git alias
 alias config='/usr/bin/git --git-dir=/Users/marian/.dotfiles/ --work-tree=/Users/marian'
 
+#lazygit alias for dotfiles
+alias lc='lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
 #nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
