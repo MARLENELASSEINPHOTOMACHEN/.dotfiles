@@ -750,6 +750,12 @@ require("lazy").setup(
 			cmd = { "ConformInfo" },
 			keys = {
 				{
+					"<leader>cw", --MARLENE changed match lazyvim and to avoid conflict with Harpoon keys
+					"<cmd>noautocmd w<cr>",
+					mode = "",
+					desc = "[w]rite without formatting",
+				},
+				{
 					"<leader>cf", --MARLENE changed match lazyvim and to avoid conflict with Harpoon keys
 					function()
 						require("conform").format({ async = true, lsp_format = "fallback" })
