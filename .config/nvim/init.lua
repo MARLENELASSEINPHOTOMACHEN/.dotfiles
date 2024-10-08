@@ -441,11 +441,14 @@ require("lazy").setup(
 					-- You can put your default mappings / updates / etc. in here
 					--  All the info you're looking for is in `:help telescope.setup()`
 					--
-					-- defaults = {
-					--   mappings = {
-					--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-					--   },
-					-- },
+					defaults = {
+						preview = {
+							filesize_limit = 0.2, -- MB
+						},
+						--   mappings = {
+						--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+						--   },
+					},
 					-- pickers = {}
 					extensions = {
 						["ui-select"] = {
@@ -750,7 +753,7 @@ require("lazy").setup(
 			cmd = { "ConformInfo" },
 			keys = {
 				{
-					"<leader>cw", --MARLENE changed match lazyvim and to avoid conflict with Harpoon keys
+					"<leader>cw", --MARLENE added hotkey to save without formatting
 					"<cmd>noautocmd w<cr>",
 					mode = "",
 					desc = "[w]rite without formatting",
