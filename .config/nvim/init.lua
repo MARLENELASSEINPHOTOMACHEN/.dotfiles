@@ -1317,12 +1317,18 @@ require("lazy").setup(
 			"tamton-aquib/duck.nvim",
 			config = function()
 				vim.keymap.set("n", "<leader>dd", function()
-					local myTable = { "🦆", "🦡", "🐈", "🐘" }
-					require("duck").hatch(myTable[math.random(#myTable)])
+					require("duck").hatch()
 				end, { desc = "[d]uck" })
+				vim.keymap.set("n", "<leader>dr", function()
+					local animals = { "🦆", "🦡", "🐈", "🐘", "🐕", "🦍", "🐓" }
+					require("duck").hatch(animals[math.random(#animals)])
+				end, { desc = "[r]andom duck" })
 				vim.keymap.set("n", "<leader>dk", function()
 					require("duck").cook()
-				end, { desc = "[k]ill" })
+				end, { desc = "[k]ill last duck" })
+				vim.keymap.set("n", "<leader>da", function()
+					require("duck").cook_all()
+				end, { desc = "kill [a]ll ducks" })
 			end,
 		},
 		-- {
