@@ -1313,6 +1313,17 @@ require("lazy").setup(
 				{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "Lazy[G]it" },
 			},
 		},
+		{
+			"tamton-aquib/duck.nvim",
+			config = function()
+				vim.keymap.set("n", "<leader>dd", function()
+					require("duck").hatch()
+				end, { desc = "[d]uck" })
+				vim.keymap.set("n", "<leader>dk", function()
+					require("duck").cook()
+				end, { desc = "[k]ill" })
+			end,
+		},
 		-- {
 		-- 	"folke/noice.nvim",
 		-- 	event = "VeryLazy",
