@@ -1317,7 +1317,8 @@ require("lazy").setup(
 			"tamton-aquib/duck.nvim",
 			config = function()
 				vim.keymap.set("n", "<leader>dd", function()
-					require("duck").hatch()
+					local myTable = { "🦆", "🦡", "🐈", "🐘" }
+					require("duck").hatch(myTable[math.random(#myTable)])
 				end, { desc = "[d]uck" })
 				vim.keymap.set("n", "<leader>dk", function()
 					require("duck").cook()
