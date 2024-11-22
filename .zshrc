@@ -9,7 +9,7 @@ alias python=/usr/bin/python3
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 
 #path to zig
-export PATH=$PATH:~/zig/zig-macos-aarch64-0.12.0
+export PATH=$PATH:~/zig/zig-macos-aarch64-0.13.0
 
 #hot reload air for go
 alias air='~/go/bin/air'
