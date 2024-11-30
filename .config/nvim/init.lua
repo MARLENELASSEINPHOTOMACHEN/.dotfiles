@@ -93,6 +93,9 @@ vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true --MARLENE set true
 
+-- MARLENE set background to light to fix some plugins
+vim.g.background = "light"
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -1279,6 +1282,7 @@ require("lazy").setup(
 				code_font_family = "RedHatMono Nerd Font",
 				save_path = "~/Pictures",
 				has_breadcrumbs = true,
+				has_line_number = true,
 				watermark = "",
 				bg_theme = "summer",
 				bg_x_padding = 61,
@@ -1343,6 +1347,19 @@ require("lazy").setup(
 				vim.keymap.set("n", "<leader>da", function()
 					require("duck").cook_all()
 				end, { desc = "kill [a]ll ducks" })
+			end,
+		},
+		{
+			"rachartier/tiny-inline-diagnostic.nvim",
+			event = "VeryLazy", -- Or `LspAttach`
+			priority = 1000, -- needs to be loaded in first
+			config = function()
+				vim.diagnostic.config({ virtual_text = false })
+				require("tiny-inline-diagnostic").setup({
+					options = {
+						multilines = true,
+					},
+				})
 			end,
 		},
 	}, -- NOTE: end of custom plugins
