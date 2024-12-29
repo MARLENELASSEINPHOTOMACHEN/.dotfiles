@@ -326,9 +326,8 @@ require("lazy").setup(
 		-- which loads which-key before all the UI elements are loaded. Events can be
 		-- normal autocommands events (`:help autocmd-events`).
 		--
-		-- Then, because we use the `config` key, the configuration only runs
-		-- after the plugin has been loaded:
-		--  config = function() ... end
+		-- Then, because we use the `opts` key (recommended), the configuration runs
+		-- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
 		{ -- Useful plugin to show you pending keybinds.
 			"folke/which-key.nvim",
@@ -616,6 +615,12 @@ require("lazy").setup(
 						--  For example, in C this would take you to the header.
 						map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+						-- MALRENE: i did this, maybe its cool id
+						-- Rename the variable under your cursor.
+						--  Most Language Servers support renaming across files, etc.
+						map("gh", vim.lsp.buf.signature_help, "[g]et [h]elp")
+						-- /MARLENE end
+
 						-- The following two autocommands are used to highlight references of the
 						-- word under your cursor when your cursor rests there for a little while.
 						--    See `:help CursorHold` for information about when this is executed
@@ -700,7 +705,6 @@ require("lazy").setup(
 					cssls = {},
 					-- biome = {}, --MARLENE: not doing anything atm
 					-- svelte = {}, --MARLENE: ensure :TSInstall svelte typescript javascript css html jsdoc --are installed
-					-- elixirls = {}, --MARLENE
 
 					prettierd = {}, --MARLENE: replacement for biome for the time being
 					--
@@ -712,8 +716,8 @@ require("lazy").setup(
 					--
 
 					lua_ls = {
-						-- cmd = {...},
-						-- filetypes = { ...},
+						-- cmd = { ... },
+						-- filetypes = { ... },
 						-- capabilities = {},
 						settings = {
 							Lua = {
@@ -1279,7 +1283,8 @@ require("lazy").setup(
 				},
 			},
 			opts = {
-				code_font_family = "RedHatMono Nerd Font",
+				code_font_family = "Belinsky Nerd Font",
+				-- code_font_family = "CaskaydiaCove Nerd Font",
 				save_path = "~/Pictures",
 				has_breadcrumbs = true,
 				has_line_number = true,
