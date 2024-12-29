@@ -1225,7 +1225,7 @@ require("lazy").setup(
 				)
 			end,
 			-- Optional dependencies
-			dependencies = { "nvim-tree/nvim-web-devicons" },
+			dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		},
 		{ -- Quick Access to file
 			"ThePrimeagen/harpoon",
