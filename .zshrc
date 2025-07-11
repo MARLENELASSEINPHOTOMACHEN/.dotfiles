@@ -12,8 +12,8 @@ export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 export PATH=$PATH:~/zig/zig-macos-aarch64-0.13.0
 
 #path to elixir
-export PATH=$HOME//opt/homebrew/Cellar/erlang/27.1.2/lib/erlang/erts-15.1.2/bin:$PATH
-export PATH=$HOME//opt/homebrew/bin:$PATH
+export PATH=$HOME/.elixir-install/installs/otp/27.1.2/erts-15.1.2/bin:$PATH
+export PATH=$HOME/.elixir-install/installs/elixir/1.17.3-otp-27/bin:$PATH
 
 #hot reload air for go
 alias air='~/go/bin/air'
