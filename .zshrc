@@ -41,3 +41,6 @@ alias :q='exit'
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# claude local
+alias claude="/Users/marian/.claude/local/claude"
