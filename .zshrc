@@ -44,3 +44,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # claude local
 alias claude="/Users/marian/.claude/local/claude"
+. "/Users/marian/.deno/env"
