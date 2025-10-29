@@ -967,17 +967,17 @@ require("lazy").setup({
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			local statusline = require("mini.statusline")
+			-- local statusline = require("mini.statusline") --MARLENE comment
 			-- set use_icons to true if you have a Nerd Font
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
+			-- statusline.setup({ use_icons = vim.g.have_nerd_font }) --MARLENE comment
 
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we set the section for
 			-- cursor location to LINE:COLUMN
 			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
+			-- statusline.section_location = function() --MARLENE comment
+			-- 	return "%2l:%-2v" --MARLENE comment
+			-- end --MARLENE comment
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
@@ -1047,6 +1047,44 @@ require("lazy").setup({
 	-- Or use telescope!
 	-- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
 	-- you can continue same window with `<space>sr` which resumes last telescope search
+	--MARLENE NOTE: Start of custom marlene plugins
+	{ -- Set lualine as statusline
+		"nvim-lualine/lualine.nvim",
+		-- See `:help lualine.txt`
+		config = function()
+			local seoul256_light = require("lualine.themes.seoul256")
+
+			-- Change the background of lualine_c section for normal mode
+			-- seoul256_light.normal.c.bg = "#FFBFBD" krank geiles corall
+			seoul256_light.normal.c.bg = "#FFFFDF"
+			seoul256_light.normal.b.bg = "#E09B99"
+			seoul256_light.insert.b.bg = "#E09B99"
+			seoul256_light.visual.b.bg = "#BCDDBD"
+			seoul256_light.visual.b.fg = "#808080"
+			seoul256_light.replace.b.bg = "#BCDDBD"
+			seoul256_light.replace.b.fg = "#808080"
+
+			seoul256_light.inactive.c.bg = "#D1D0D1"
+			seoul256_light.inactive.c.fg = "#4B4B4B"
+			--löppt: vielleicht in variable thx
+			seoul256_light.normal.a.fg = "#D9D9D9"
+			seoul256_light.visual.a.fg = "#D9D9D9"
+			seoul256_light.insert.a.fg = "#D9D9D9"
+			seoul256_light.replace.a.fg = "#D9D9D9"
+
+			require("lualine").setup({
+				options = {
+					icons_enabled = vim.g.have_nerd_font,
+					-- theme = "auto",
+					theme = seoul256_light,
+					-- component_separators = "|",
+					-- section_separators = "",
+					component_separators = "",
+					section_separators = { left = "", right = "" },
+				},
+			})
+		end,
+	},
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
