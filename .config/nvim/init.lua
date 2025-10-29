@@ -894,20 +894,47 @@ require("lazy").setup({
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"folke/tokyonight.nvim",
+		"junegunn/seoul256.vim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
-		config = function()
-			---@diagnostic disable-next-line: missing-fields
-			require("tokyonight").setup({
-				styles = {
-					comments = { italic = false }, -- Disable italics in comments
-				},
-			})
-
+		init = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("seoul256-light")
+
+			-- You can configure highlights by doing something like:
+			-- vim.cmd.hi("Comment gui=none")
+
+			vim.cmd("highlight! link @variable Normal")
+			vim.cmd("highlight! link @keyword.exception Exception")
+			vim.cmd("highlight! link @keyword.conditional Conditional")
+			vim.cmd("highlight! link @keyword.repeat Repeat")
+			vim.cmd.hi("Statement gui=none")
+			vim.cmd("highlight! link @keyword.return Statement")
+			vim.cmd("highlight! link @keyword.operator Operator")
+			-- vim.cmd("highlight! link @keyword.import Special")
+			-- vim.cmd("highlight! link @type.typescript Normal")
+			vim.cmd.hi("Title gui=none")
+
+			-- vim.cmd.hi("Special guifg=#E12672")
+			--trash this above
+
+			-- -- MARLENE: for vim-notify
+			-- vim.cmd.hi("NotifyERRORBorder guifg=#E12672")
+			-- vim.cmd.hi("NotifyWARNBorder guifg=#4B4B4B")
+			-- vim.cmd.hi("NotifyINFOBorder guifg=#757575")
+			-- vim.cmd.hi("NotifyDEBUGBorder guifg=#757575")
+			-- vim.cmd.hi("NotifyTRACEBorder guifg=#252525")
+			-- vim.cmd.hi("NotifyERRORIcon guifg=#E12672")
+			-- vim.cmd.hi("NotifyWARNIcon guifg=#BE9873")
+			-- vim.cmd.hi("NotifyINFOIcon guifg=#E09B99")
+			-- vim.cmd.hi("NotifyDEBUGIcon guifg=#757575")
+			-- vim.cmd.hi("NotifyTRACEIcon guifg=#252525")
+			-- vim.cmd.hi("NotifyERRORTitle guifg=#E12672")
+			-- vim.cmd.hi("NotifyWARNTitle guifg=#BE9873")
+			-- vim.cmd.hi("NotifyINFOTitle guifg=#98BC99")
+			-- vim.cmd.hi("NotifyDEBUGTitle guifg=#757575")
+			-- vim.cmd.hi("NotifyTRACETitle guifg=#252525")
 		end,
 	},
 
