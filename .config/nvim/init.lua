@@ -357,6 +357,8 @@ require("lazy").setup({
 			-- delay between pressing a key and opening which-key (milliseconds)
 			-- this setting is independent of vim.o.timeoutlen
 			delay = 0,
+			---@type false | "classic" | "modern" | "helix" --MARLENE added style
+			preset = "modern", --MARLENE added style
 			icons = {
 				-- set icon mappings to true if you have a Nerd Font
 				mappings = vim.g.have_nerd_font,
