@@ -1047,6 +1047,47 @@ require("lazy").setup({
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
+			-- MARLENE more:
+			require("mini.pairs").setup()
+
+			-- require("mini.move").setup()
+
+			--Highlight colors in code
+			local hipatterns = require("mini.hipatterns")
+			hipatterns.setup({
+				highlighters = {
+
+					-- Highlight hex color strings (`#rrggbb`) using that color
+					hex_color = hipatterns.gen_highlighter.hex_color(),
+				},
+			})
+			--
+			-- Animate vim motions -- this fixes mouse scroll
+			local mouse_scrolled = false
+			for _, scroll in ipairs({ "Up", "Down" }) do
+				local key = "<ScrollWheel" .. scroll .. ">"
+				vim.keymap.set("", key, function()
+					mouse_scrolled = true
+					return key
+				end, { noremap = true, expr = true })
+			end
+
+			local animate = require("mini.animate")
+			animate.setup({
+				scroll = {
+					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
+					subscroll = animate.gen_subscroll.equal({
+						predicate = function(total_scroll)
+							if mouse_scrolled then
+								mouse_scrolled = false
+								return false
+							end
+							return total_scroll > 1
+						end,
+					}),
+				},
+			})
+			--MARLENE end
 		end,
 	},
 	{ -- Highlight, edit, and navigate code
