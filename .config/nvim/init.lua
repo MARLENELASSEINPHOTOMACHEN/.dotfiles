@@ -810,7 +810,13 @@ require("lazy").setup({
 		cmd = { "ConformInfo" },
 		keys = {
 			{
-				"<leader>f",
+				"<leader>cw", --MARLENE added hotkey to save without formatting
+				"<cmd>noautocmd w<cr>",
+				mode = "",
+				desc = "[w]rite without formatting",
+			},
+			{
+				"<leader>cf", --MARLENE changed
 				function()
 					require("conform").format({ async = true, lsp_format = "fallback" })
 				end,
@@ -840,7 +846,12 @@ require("lazy").setup({
 				-- python = { "isort", "black" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettierd", "prettier", stop_after_first = true }, --MARLENE uncommented
+
+				typescript = { "prettierd", "prettier", stop_after_first = true }, --MARLENE both
+				html = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				css = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				scss = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
 			},
 		},
 	},
