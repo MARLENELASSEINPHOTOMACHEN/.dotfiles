@@ -1048,8 +1048,10 @@ require("lazy").setup({
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
-			-- MARLENE more:
+			-- MARLENE NOTE: custom mini plugins from here on:
 			require("mini.pairs").setup()
+
+			-- require("mini.indentscope").setup()
 
 			-- require("mini.move").setup()
 
