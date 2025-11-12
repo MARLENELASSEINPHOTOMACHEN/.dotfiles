@@ -1158,7 +1158,9 @@ require("lazy").setup({
 	-- Or use telescope!
 	-- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
 	-- you can continue same window with `<space>sr` which resumes last telescope search
-	--MARLENE NOTE: Start of custom marlene plugins
+
+	-- MARLENE PLUGINS:
+	-- NOTE: add own plugins below - keep above as clean as possible
 	{ -- Set lualine as statusline
 		"nvim-lualine/lualine.nvim",
 		-- See `:help lualine.txt`
