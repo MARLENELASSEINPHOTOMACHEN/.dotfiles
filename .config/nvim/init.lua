@@ -1096,7 +1096,7 @@ require("lazy").setup({
 		main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
-			ensure_installed = {
+			ensure_installed = { --MARLENE added css, ts, js, regex
 				"bash",
 				"c",
 				"diff",
@@ -1108,6 +1108,10 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"css",
+				"javascript",
+				"typescript",
+				"regex",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
