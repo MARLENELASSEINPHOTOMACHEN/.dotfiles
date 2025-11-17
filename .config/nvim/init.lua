@@ -1051,7 +1051,11 @@ require("lazy").setup({
 			-- MARLENE NOTE: custom mini plugins from here on:
 			require("mini.pairs").setup()
 
-			-- require("mini.indentscope").setup()
+			-- require("mini.indentscope").setup({
+			-- 	draw = {
+			-- 		animation = require("mini.indentscope").gen_animation.none(),
+			-- 	},
+			-- })
 
 			-- require("mini.move").setup()
 
