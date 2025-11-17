@@ -1201,6 +1201,32 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{ -- text-like editable file browser
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup({
+				-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+				delete_to_trash = true,
+				view_options = {
+					-- Show files and directories that start with "."
+					show_hidden = false,
+				},
+				keymaps = {
+					["<C-h>"] = false,
+					["<M-h"] = "actions.select_split",
+				},
+			})
+			-- Open parent directory in current window
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+			-- Open parent directory in floating window
+			vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Open parent directory floating" })
+		end,
+		-- Optional dependencies
+		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
 	{ -- Add indentation guides even on blank lines
 		"lukas-reineke/indent-blankline.nvim",
 		-- Enable `lukas-reineke/indent-blankline.nvim`
