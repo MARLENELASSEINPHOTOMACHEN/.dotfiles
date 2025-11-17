@@ -1207,6 +1207,8 @@ require("lazy").setup({
 	},
 	{ -- text-like editable file browser
 		"stevearc/oil.nvim",
+		--		---@module 'oil'
+		--		---@type oil.SetupOpts
 		config = function()
 			require("oil").setup({
 				-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
