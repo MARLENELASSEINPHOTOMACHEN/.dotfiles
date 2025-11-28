@@ -13,8 +13,8 @@
   "buffer_font_family": "Belinsky",
   "theme": {
     "mode": "system",
-    "light": "Rosé Pine Dawn",
-    "dark": "Rosé Pine Moon"
+    "light": "Ayu Light",
+    "dark": "Ayu Dark"
   },
   "vim": {
     "toggle_relative_line_numbers": true
