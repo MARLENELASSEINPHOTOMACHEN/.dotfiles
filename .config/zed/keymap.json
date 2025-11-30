@@ -22,6 +22,35 @@
     "context": "VimControl && !menu",
     "bindings": {
       // Put key bindings here if you want them to work in normal & visual mode.
+
+      // === Go To Actions (matching your Neovim gr* keymaps) ===
+
+      // grn -> Rename (LSP rename, like vim.lsp.buf.rename)
+      "g r n": "editor::Rename",
+
+      // gra -> Code Action (like vim.lsp.buf.code_action)
+      "g r a": "editor::ToggleCodeActions",
+
+      // grr -> Go to References (like telescope lsp_references)
+      "g r r": "editor::FindAllReferences",
+
+      // gri -> Go to Implementation (like telescope lsp_implementations)
+      "g r i": "editor::GoToImplementation",
+
+      // grd -> Go to Definition (like telescope lsp_definitions)
+      "g r d": "editor::GoToDefinition",
+
+      // grD -> Go to Declaration (like vim.lsp.buf.declaration)
+      "g r D": "editor::GoToDeclaration",
+
+      // grt -> Go to Type Definition (like telescope lsp_type_definitions)
+      "g r t": "editor::GoToTypeDefinition",
+
+      // gO -> Document Symbols (like telescope lsp_document_symbols)
+      "g O": "outline::Toggle",
+
+      // gW -> Workspace Symbols (like telescope lsp_dynamic_workspace_symbols)
+      "g W": "project_symbols::Toggle"
     }
   },
   {
