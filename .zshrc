@@ -44,4 +44,4 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # claude local
-alias claude="/Users/marian/.claude/local/claude"
+export PATH="$HOME/.local/bin:$PATH"
