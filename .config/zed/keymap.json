@@ -57,11 +57,45 @@
     "context": "vim_mode == normal && !menu",
     "bindings": {
       "g h": "editor::ShowSignatureHelp",
+
+      // === Search Keymaps (matching your Neovim <leader>s* keymaps) ===
+
+      // <leader>sf -> Search Files
       "space s f": "file_finder::Toggle",
+
+      // <leader>sg -> Search by Grep (live grep)
       "space s g": "pane::DeploySearch",
+
+      // <leader>sw -> Search current Word
+      "space s w": "pane::DeploySearch",
+
+      // <leader>sd -> Search Diagnostics
+      "space s d": "diagnostics::Deploy",
+
+      // <leader>sh -> Search Help (Zed docs)
+      "space s h": "zed::OpenDocs",
+
+      // <leader>sk -> Search Keymaps
+      "space s k": "zed::OpenKeymap",
+
+      // <leader>s. -> Search Recent Files (oldfiles)
+      "space s .": "projects::OpenRecent",
+
+      // <leader><leader> -> Find existing buffers
+      "space space": "tab_switcher::Toggle",
+
+      // <leader>/ -> Fuzzy search in current buffer
+      "space /": "buffer_search::Deploy",
+
+      // <leader>sr -> Search Resume (reopen last search)
+      "space s r": "project_search::ToggleFocus",
+
+      // === Code Actions ===
       "space c f": "editor::Format",
+      "space c w": "workspace::SaveWithoutFormat",
       "space r n": "editor::Rename",
       "space c a": "editor::ToggleCodeActions"
+
       // "shift-y": ["workspace::SendKeystrokes", "y $"] // Use neovim's yank behavior: yank to end of line.
     }
   },
