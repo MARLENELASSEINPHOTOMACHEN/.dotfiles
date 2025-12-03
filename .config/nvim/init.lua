@@ -802,6 +802,11 @@ require("lazy").setup({
 					end,
 				},
 			})
+			-- MARLENE Gleam LSP (not managed by Mason - comes with gleam binary)
+			vim.lsp.config("gleam", {
+				capabilities = capabilities,
+			})
+			vim.lsp.enable("gleam")
 		end,
 	},
 
@@ -854,6 +859,7 @@ require("lazy").setup({
 				css = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
 				scss = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
 				astro = { "prettierd", "prettier" }, --MARLENE
+				gleam = { "gleam" }, --MARLENE
 			},
 		},
 	},
