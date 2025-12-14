@@ -1220,13 +1220,21 @@ require("lazy").setup({
 			require("oil").setup({
 				-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
 				delete_to_trash = true,
+				constrain_cursor = "name",
 				view_options = {
 					-- Show files and directories that start with "."
 					show_hidden = false,
 				},
 				keymaps = {
 					["<C-h>"] = false,
-					["<M-h"] = "actions.select_split",
+					["<C-l>"] = false,
+				},
+				float = {
+					padding = 2,
+					max_width = 0.6,
+					max_height = 0.8,
+					border = "rounded",
+					preview_split = "auto",
 				},
 			})
 			-- Open parent directory in current window
