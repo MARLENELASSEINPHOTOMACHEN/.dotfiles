@@ -514,6 +514,9 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
+
+			-- MARLENE: Search files from git status (changed + untracked)
+			vim.keymap.set("n", "<leader>sc", builtin.git_status, { desc = "[S]earch [C]hanged files" }) -- MARLENE added
 		end,
 	},
 
