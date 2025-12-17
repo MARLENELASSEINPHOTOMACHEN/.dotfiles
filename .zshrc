@@ -1,8 +1,10 @@
-#enable completion
-autoload -Uz compinit && compinit
-
-# Load Angular CLI autocompletion.
-# source <(ng completion script)
+# Completion with 24-hour cache (avoids recompiling every startup)
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 #python map to python3
 alias python=/usr/bin/python3
@@ -27,10 +29,19 @@ alias lc='lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 #alias for common folder:
 alias cw='cd ~/Developer/work/cat/cat_web_new'
 
-#nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# NVM - lazy-loaded to avoid ~300ms startup penalty
+# Loads automatically on first use of nvm/node/npm/npx
+export NVM_DIR="$HOME/.nvm"
+
+nvm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+node() { nvm; node "$@"; }
+npm() { nvm; npm "$@"; }
+npx() { nvm; npx "$@"; }
 
 #MARLENE:
 alias :q='exit'
