@@ -6,6 +6,12 @@ else
   compinit -C
 fi
 
+# Shell behavior improvements
+setopt AUTO_CD              # Type directory name to cd into it
+setopt HIST_IGNORE_DUPS     # Don't save duplicate commands in history
+setopt INTERACTIVE_COMMENTS # Allow # comments in interactive shell (for pasting)
+setopt RM_STAR_WAIT         # 10-second wait before rm * (panic protection)
+
 #python map to python3
 alias python=/usr/bin/python3
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
