@@ -12,9 +12,8 @@ setopt HIST_IGNORE_DUPS     # Don't save duplicate commands in history
 setopt INTERACTIVE_COMMENTS # Allow # comments in interactive shell (for pasting)
 setopt RM_STAR_WAIT         # 10-second wait before rm * (panic protection)
 
-#python map to python3
-alias python=/usr/bin/python3
-export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
+# Homebrew Python (hardcoded for Apple Silicon, avoids slow brew --prefix call)
+export PATH="/opt/homebrew/opt/python@3/libexec/bin:$PATH"
 
 # Zig compiler - version managed via symlink
 # How it works: ~/zig/current is a symlink pointing to the actual version folder
@@ -43,16 +42,24 @@ use-elixir() {
   ln -sfn ~/.elixir-install/installs/elixir/"$1" ~/.elixir-install/elixir-current && echo "Now using Elixir: $1"
 }
 
-#hot reload air for go
-alias air='~/go/bin/air'
+# Go binaries
+export PATH="$HOME/go/bin:$PATH"
 
-#dotiles git alias
-alias config='/usr/bin/git --git-dir=/Users/marian/.dotfiles/ --work-tree=/Users/marian'
+# Claude CLI
+export PATH="$HOME/.local/bin:$PATH"
 
-#lazygit alias for dotfiles
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# Dotfiles git alias
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Lazygit alias for dotfiles
 alias lc='lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-#alias for common folder:
+# Common folder shortcut
 alias cw='cd ~/Developer/work/cat/cat_web_new'
 
 # NVM - lazy-loaded to avoid ~300ms startup penalty
@@ -69,16 +76,5 @@ node() { nvm; node "$@"; }
 npm() { nvm; npm "$@"; }
 npx() { nvm; npx "$@"; }
 
-#MARLENE:
+# Vim muscle memory
 alias :q='exit'
-
-
-# bun completions
-[ -s "/Users/marian/.bun/_bun" ] && source "/Users/marian/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# claude local
-export PATH="$HOME/.local/bin:$PATH"
