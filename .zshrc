@@ -11,9 +11,6 @@ setopt AUTO_CD              # Type directory name to cd into it
 setopt HIST_IGNORE_DUPS     # Don't save duplicate commands in history
 setopt INTERACTIVE_COMMENTS # Allow # comments in interactive shell (for pasting)
 setopt RM_STAR_WAIT         # 10-second wait before rm * (panic protection)
-
-# Homebrew Python (hardcoded for Apple Silicon, avoids slow brew --prefix call)
-export PATH="/opt/homebrew/opt/python@3/libexec/bin:$PATH"
 setopt CORRECT              # Correct spelling mistakes - more annoying than helpful most of the time but saved my ass some time soo
 
 # Zig compiler - version managed via symlink
