@@ -14,6 +14,7 @@ setopt RM_STAR_WAIT         # 10-second wait before rm * (panic protection)
 
 # Homebrew Python (hardcoded for Apple Silicon, avoids slow brew --prefix call)
 export PATH="/opt/homebrew/opt/python@3/libexec/bin:$PATH"
+setopt CORRECT              # Correct spelling mistakes - more annoying than helpful most of the time but saved my ass some time soo
 
 # Zig compiler - version managed via symlink
 # How it works: ~/zig/current is a symlink pointing to the actual version folder
