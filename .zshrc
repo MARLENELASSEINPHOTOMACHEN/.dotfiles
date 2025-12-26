@@ -57,9 +57,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # Lazygit alias for dotfiles
 alias lc='lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-# Common folder shortcut
-alias cw='cd ~/Developer/work/cat/cat_web_new'
-
 # NVM - lazy-loaded to avoid ~300ms startup penalty
 # Loads automatically on first use of nvm/node/npm/npx
 export NVM_DIR="$HOME/.nvm"
