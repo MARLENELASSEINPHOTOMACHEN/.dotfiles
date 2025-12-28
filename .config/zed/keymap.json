@@ -61,6 +61,10 @@
       // === Git Hunk Navigation (like ]h / [h in Neovim) ===
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPrevHunk",
+
+      // === Git Blame Toggle (like <leader>tb) ===
+      "space t b": "editor::ToggleGitBlame",
+
       // === Search Keymaps (matching your Neovim <leader>s* keymaps) ===
 
       // <leader>sf -> Search Files
