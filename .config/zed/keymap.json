@@ -65,6 +65,9 @@
       // === Git Blame Toggle (like <leader>tb) ===
       "space t b": "editor::ToggleGitBlame",
 
+      // === File Explorer (like oil.nvim's "-") ===
+      "-": "project_panel::ToggleFocus",
+
       // === Search Keymaps (matching your Neovim <leader>s* keymaps) ===
 
       // <leader>sf -> Search Files
