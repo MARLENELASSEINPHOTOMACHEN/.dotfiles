@@ -58,6 +58,9 @@
     "bindings": {
       "g h": "editor::ShowSignatureHelp",
 
+      // === Git Hunk Navigation (like ]h / [h in Neovim) ===
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPrevHunk",
       // === Search Keymaps (matching your Neovim <leader>s* keymaps) ===
 
       // <leader>sf -> Search Files
