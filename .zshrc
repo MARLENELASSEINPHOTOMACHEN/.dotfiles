@@ -13,6 +13,9 @@ setopt INTERACTIVE_COMMENTS # Allow # comments in interactive shell (for pasting
 setopt RM_STAR_WAIT         # 10-second wait before rm * (panic protection)
 setopt CORRECT              # Correct spelling mistakes - more annoying than helpful most of the time but saved my ass some time soo
 
+# Default editor
+export EDITOR="nvim"
+
 # Zig compiler - version managed via symlink
 # How it works: ~/zig/current is a symlink pointing to the actual version folder
 # To switch versions: use-zig zig-macos-aarch64-0.14.0
