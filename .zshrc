@@ -51,14 +51,17 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# jj completions - cached to avoid running jj on every startup
-_jj_comp="$HOME/.cache/jj/completions.zsh"
-if [[ ! -f "$_jj_comp" || -n ${_jj_comp}(#qN.mh+24) ]]; then
-  mkdir -p "${_jj_comp:h}"
-  COMPLETE=zsh jj > "$_jj_comp" 2>/dev/null
-fi
-[[ -f "$_jj_comp" ]] && source "$_jj_comp"
-unset _jj_comp
+# jj completions
+source <(COMPLETE=zsh jj)
+
+# # jj completions - cached to avoid running jj on every startup
+# _jj_comp="$HOME/.cache/jj/completions.zsh"
+# if [[ ! -f "$_jj_comp" || -n ${_jj_comp}(#qN.mh+24) ]]; then
+#   mkdir -p "${_jj_comp:h}"
+#   COMPLETE=zsh jj > "$_jj_comp" 2>/dev/null
+# fi
+# [[ -f "$_jj_comp" ]] && source "$_jj_comp"
+# unset _jj_comp
 
 # Dotfiles git alias
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
