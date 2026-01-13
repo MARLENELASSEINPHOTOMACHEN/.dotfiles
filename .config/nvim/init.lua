@@ -862,6 +862,7 @@ require("lazy").setup({
 				css = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
 				scss = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
 				astro = { "prettierd", "prettier" }, --MARLENE
+				svelte = { "prettierd", "prettier" }, --MARLENE
 				gleam = { "gleam" }, --MARLENE
 			},
 		},
