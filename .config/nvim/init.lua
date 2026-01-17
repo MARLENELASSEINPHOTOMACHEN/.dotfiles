@@ -1332,6 +1332,18 @@ require("lazy").setup({
 			end, { desc = "[t]oggle [c]ontext" })
 		end,
 	},
+	{ -- Git diff and file history viewer
+		"sindrets/diffview.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+		keys = {
+			{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview: open" },
+			{ "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", desc = "Diffview: file history" },
+			{ "<leader>gF", "<cmd>DiffviewFileHistory<cr>", desc = "Diffview: branch history" },
+			{ "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "Diffview: close" },
+		},
+		opts = {},
+	},
 	-- add new plugins right above this line
 }, {
 	ui = {
