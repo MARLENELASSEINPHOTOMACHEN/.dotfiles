@@ -964,23 +964,68 @@ require("lazy").setup({
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
 
-			-- Simple and easy statusline.
+			-- Simple and easy statusline. --MARLENE commented, using lualine
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			local statusline = require("mini.statusline")
+			-- local statusline = require("mini.statusline")
 			-- set use_icons to true if you have a Nerd Font
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
+			-- statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we set the section for
 			-- cursor location to LINE:COLUMN
-			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
+			-- ---@diagnostic disable-next-line: duplicate-set-field
+			-- statusline.section_location = function()
+			-- 	return "%2l:%-2v"
+			-- end
 
 			-- ... and there is more!
 			--  Check out: https://github.com/nvim-mini/mini.nvim
+
+			-- MARLENE: custom mini plugins from here on:
+			require("mini.pairs").setup() --MARLENE
+
+			-- require("mini.indentscope").setup({ --MARLENE
+			-- 	draw = {
+			-- 		animation = require("mini.indentscope").gen_animation.none(),
+			-- 	},
+			-- })
+
+			-- require("mini.move").setup() --MARLENE commented
+
+			-- Highlight colors in code --MARLENE
+			local hipatterns = require("mini.hipatterns")
+			hipatterns.setup({
+				highlighters = {
+					hex_color = hipatterns.gen_highlighter.hex_color(),
+				},
+			})
+
+			-- Animate vim motions -- this fixes mouse scroll --MARLENE
+			local mouse_scrolled = false
+			for _, scroll in ipairs({ "Up", "Down" }) do
+				local key = "<ScrollWheel" .. scroll .. ">"
+				vim.keymap.set("", key, function()
+					mouse_scrolled = true
+					return key
+				end, { noremap = true, expr = true })
+			end
+
+			local animate = require("mini.animate")
+			animate.setup({
+				scroll = {
+					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
+					subscroll = animate.gen_subscroll.equal({
+						predicate = function(total_scroll)
+							if mouse_scrolled then
+								mouse_scrolled = false
+								return false
+							end
+							return total_scroll > 1
+						end,
+					}),
+				},
+			})
 		end,
 	},
 
