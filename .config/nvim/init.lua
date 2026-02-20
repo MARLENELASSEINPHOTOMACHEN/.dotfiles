@@ -1217,24 +1217,6 @@ require("lazy").setup({
 		---@type render.md.UserConfig
 		opts = {},
 	},
-	{ --MARLENE temp snacks.nvim to compare git file history pickers
-		"folke/snacks.nvim",
-		priority = 1000,
-		lazy = false,
-		---@type snacks.Config
-		opts = {
-			picker = { enabled = true },
-		},
-		keys = {
-			{
-				"<leader>gf",
-				function()
-					Snacks.picker.git_log_file()
-				end,
-				desc = "[G]it [F]ile History ",
-			}, --MARLENE remember to disable telescope binding
-		},
-	},
 	-- MARLENE add new plugins right above this line
 }, {
 	ui = {
