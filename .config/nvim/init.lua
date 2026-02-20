@@ -1051,6 +1051,42 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{ -- text-like editable file browser
+		"stevearc/oil.nvim",
+		--		---@module 'oil'
+		--		---@type oil.SetupOpts
+		config = function()
+			require("oil").setup({
+				-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+				delete_to_trash = true,
+				constrain_cursor = "name",
+				view_options = {
+					-- Show files and directories that start with "."
+					show_hidden = false,
+				},
+				keymaps = {
+					["<C-h>"] = false,
+					["<C-l>"] = false,
+				},
+				float = {
+					padding = 2,
+					max_width = 0.6,
+					max_height = 0.8,
+					border = "rounded",
+					preview_split = "auto",
+				},
+			})
+			-- Open parent directory in current window
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+			-- Open parent directory in floating window
+			vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Open parent directory floating" })
+		end,
+		-- Optional dependencies
+		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
 	-- MARLENE add new plugins right above this line
 }, {
 	ui = {
