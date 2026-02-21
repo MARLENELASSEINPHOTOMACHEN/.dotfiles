@@ -1260,5 +1260,12 @@ require("lazy").setup({
 	},
 })
 
+-- MARLENE Prerequisites:
+--   git, make, unzip, gcc (or clang)
+--   tree-sitter-cli (>= 0.26.1)  https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md
+--   npm (for LSP servers)
+--   ripgrep (for telescope live grep)
+--   fd-find (for telescope file finder)
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
