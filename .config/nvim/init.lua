@@ -715,6 +715,12 @@ require("lazy").setup({
 				vim.lsp.enable(name)
 			end
 
+			-- MARLENE Gleam LSP (not managed by Mason - comes with gleam binary)
+			vim.lsp.config("gleam", {
+				capabilities = capabilities,
+			})
+			vim.lsp.enable("gleam")
+
 			-- Special Lua Config, as recommended by neovim help docs
 			vim.lsp.config("lua_ls", {
 				on_init = function(client)
