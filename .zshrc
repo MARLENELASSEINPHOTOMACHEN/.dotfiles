@@ -73,18 +73,19 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias lc='lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # NVM - lazy-loaded to avoid ~300ms startup penalty
-# Loads automatically on first use of nvm/node/npm/npx
+# Default node is added to PATH directly so non-interactive tools (nvim LSP, etc.) can find it
+# Full nvm loads on first use of the nvm command
 export NVM_DIR="$HOME/.nvm"
+_nvm_default=$(ls -d "$NVM_DIR/versions/node/v$(cat "$NVM_DIR/alias/default" 2>/dev/null)"* 2>/dev/null | tail -1)
+[[ -n "$_nvm_default" ]] && PATH="$_nvm_default/bin:$PATH"
+unset _nvm_default
 
 nvm() {
-  unset -f nvm node npm npx
+  unset -f nvm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
   nvm "$@"
 }
-node() { nvm; node "$@"; }
-npm() { nvm; npm "$@"; }
-npx() { nvm; npx "$@"; }
 
 # Vim muscle memory
 alias :q='exit'
