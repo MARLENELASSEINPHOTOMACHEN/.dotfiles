@@ -690,7 +690,9 @@ require("lazy").setup({
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
+				ts_ls = {}, --MARLENE
+				html = {}, --MARLENE
+				cssls = {}, --MARLENE
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -704,6 +706,7 @@ require("lazy").setup({
 			vim.list_extend(ensure_installed, {
 				"lua_ls", -- Lua Language server
 				"stylua", -- Used to format Lua code
+				"prettierd", --MARLENE
 				-- You can add other tools here that you want Mason to install
 			})
 
@@ -797,7 +800,14 @@ require("lazy").setup({
 				-- python = { "isort", "black" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				typescript = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				html = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				css = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				scss = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				astro = { "prettierd", "prettier" }, --MARLENE
+				svelte = { "prettierd", "prettier" }, --MARLENE
+				gleam = { "gleam" }, --MARLENE
 			},
 		},
 	},
@@ -1050,6 +1060,10 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"css", --MARLENE
+				"javascript", --MARLENE
+				"typescript", --MARLENE
+				"regex", --MARLENE
 			}
 			require("nvim-treesitter").install(filetypes)
 			vim.api.nvim_create_autocmd("FileType", {
