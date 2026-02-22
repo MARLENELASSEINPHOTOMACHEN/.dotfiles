@@ -18,14 +18,23 @@ export EDITOR="nvim"
 
 # Zig compiler - version managed via symlink
 # How it works: ~/zig/current is a symlink pointing to the actual version folder
-# To switch versions: use-zig zig-macos-aarch64-0.14.0
 # This way PATH never changes, only the symlink target does
+# Setup:
+#   1. Go to https://ziglang.org/download/ and download the macOS aarch64 tarball
+#   2. Create ~/zig/ if it doesn't exist
+#   3. Extract the tarball into ~/zig/ — you should end up with e.g. ~/zig/zig-macos-aarch64-0.14.0/
+#   4. Run: use-zig zig-macos-aarch64-0.14.0
+#   You can have multiple versions side by side, use-zig just flips the symlink
 export PATH="$HOME/zig/current:$PATH"
 [[ -L "$HOME/zig/current" && ! -d "$HOME/zig/current" ]] && echo "Warning: ~/zig/current symlink broken - run: use-zig <version>"
 
 use-zig() {
   ln -sfn ~/zig/"$1" ~/zig/current && echo "Now using zig: $1"
 }
+_use-zig() {
+  compadd $(ls ~/zig/ 2>/dev/null | grep -v '^current$')
+}
+compdef _use-zig use-zig
 
 # Elixir/OTP - version managed via symlinks (same pattern as zig above)
 # How it works: otp-current and elixir-current are symlinks to actual version folders
