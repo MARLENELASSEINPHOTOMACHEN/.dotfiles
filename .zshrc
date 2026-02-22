@@ -38,6 +38,18 @@ compdef _use-zig use-zig
 
 # Elixir/OTP - version managed via symlinks (same pattern as zig above)
 # How it works: otp-current and elixir-current are symlinks to actual version folders
+# OTP versions live in ~/.elixir-install/installs/otp/<version>/
+# Elixir versions live in ~/.elixir-install/installs/elixir/<version>/
+# Setup:
+#   OTP (Erlang runtime):
+#     1. Build or download an OTP release (e.g. from https://github.com/erlang/otp/releases)
+#     2. Place/install it into ~/.elixir-install/installs/otp/<version>/ (e.g. 27.1.2/erts-15.1.2)
+#     3. Run: use-otp 27.1.2/erts-15.1.2
+#   Elixir:
+#     1. Download a precompiled release from https://github.com/elixir-lang/elixir/releases
+#     2. Extract it into ~/.elixir-install/installs/elixir/<version>/ (e.g. 1.17.3-otp-27)
+#     3. Run: use-elixir 1.17.3-otp-27
+#   Both can have multiple versions side by side, the use-* functions just flip the symlinks
 # To switch versions: use-otp 27.1.2/erts-15.1.2  |  use-elixir 1.17.3-otp-27
 export PATH="$HOME/.elixir-install/otp-current/bin:$PATH"
 export PATH="$HOME/.elixir-install/elixir-current/bin:$PATH"
@@ -47,10 +59,18 @@ export PATH="$HOME/.elixir-install/elixir-current/bin:$PATH"
 use-otp() {
   ln -sfn ~/.elixir-install/installs/otp/"$1" ~/.elixir-install/otp-current && echo "Now using OTP: $1"
 }
+_use-otp() {
+  compadd $(ls ~/.elixir-install/installs/otp/ 2>/dev/null)
+}
+compdef _use-otp use-otp
 
 use-elixir() {
   ln -sfn ~/.elixir-install/installs/elixir/"$1" ~/.elixir-install/elixir-current && echo "Now using Elixir: $1"
 }
+_use-elixir() {
+  compadd $(ls ~/.elixir-install/installs/elixir/ 2>/dev/null)
+}
+compdef _use-elixir use-elixir
 
 # Go binaries
 export PATH="$HOME/go/bin:$PATH"
