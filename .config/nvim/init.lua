@@ -693,6 +693,7 @@ require("lazy").setup({
 				ts_ls = {}, --MARLENE
 				html = {}, --MARLENE
 				cssls = {}, --MARLENE
+				zls = {}, --MARLENE
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -1064,6 +1065,7 @@ require("lazy").setup({
 				"javascript", --MARLENE
 				"typescript", --MARLENE
 				"regex", --MARLENE
+				"zig", --MARLENE
 			}
 			require("nvim-treesitter").install(filetypes)
 			vim.api.nvim_create_autocmd("FileType", {
