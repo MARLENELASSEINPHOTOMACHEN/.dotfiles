@@ -1241,6 +1241,37 @@ require("lazy").setup({
 		---@type render.md.UserConfig
 		opts = {},
 	},
+	{ --screenshots of code
+		-- TODO: still "<Esc><cmd>CodeSnap<cr>" is a workaround for <Esc><cmd>CodeSnap<cr> delete when fixed
+		"mistricky/codesnap.nvim",
+		tag = "v1.6.3",
+		build = "make",
+		keys = {
+			{
+				"<leader>cc",
+				"<Esc><cmd>CodeSnap<cr>",
+				mode = { "x", "v" },
+				desc = "Save selected [c]ode snapshot into [c]lipboard",
+			},
+			{
+				"<leader>cs",
+				"<Esc><cmd>CodeSnapSave<cr>",
+				mode = { "x", "v" },
+				desc = "[S]ave selected [c]ode snapshot in ~/Desktop",
+			},
+		},
+		opts = {
+			code_font_family = "Belinsky Nerd Font",
+			-- code_font_family = "CaskaydiaCove Nerd Font",
+			save_path = "~/Desktop",
+			has_breadcrumbs = true,
+			has_line_number = true,
+			watermark = "",
+			bg_theme = "summer",
+			bg_x_padding = 61,
+			bg_y_padding = 41,
+		},
+	},
 	-- MARLENE add new plugins right above this line
 }, {
 	ui = {
