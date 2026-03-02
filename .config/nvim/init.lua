@@ -696,7 +696,10 @@ require("lazy").setup({
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
+				ts_ls = {}, --MARLENE
+				html = {}, --MARLENE
+				cssls = {}, --MARLENE
+				zls = {}, --MARLENE
 
 				stylua = {}, -- Used to format Lua code
 
@@ -744,6 +747,7 @@ require("lazy").setup({
 			-- You can press `g?` for help in this menu.
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
+				"prettierd", --MARLENE
 				-- You can add other tools here that you want Mason to install
 			})
 
@@ -753,6 +757,10 @@ require("lazy").setup({
 				vim.lsp.config(name, server)
 				vim.lsp.enable(name)
 			end
+
+			-- MARLENE Gleam LSP (not managed by Mason - comes with gleam binary)
+			vim.lsp.config("gleam", {})
+			vim.lsp.enable("gleam")
 		end,
 	},
 
@@ -801,6 +809,14 @@ require("lazy").setup({
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				typescript = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				html = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				css = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				scss = { "prettierd", "prettier", stop_after_first = true }, --MARLENE
+				astro = { "prettierd", "prettier" }, --MARLENE
+				svelte = { "prettierd", "prettier" }, --MARLENE
+				gleam = { "gleam" }, --MARLENE
 			},
 		},
 	},
@@ -992,6 +1008,11 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"css", --MARLENE
+				"javascript", --MARLENE
+				"typescript", --MARLENE
+				"regex", --MARLENE
+				"zig", --MARLENE
 			}
 			require("nvim-treesitter").install(parsers)
 			vim.api.nvim_create_autocmd("FileType", {
