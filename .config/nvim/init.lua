@@ -1216,6 +1216,15 @@ require("lazy").setup({
 		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 		lazy = false,
 	},
+
+	{ -- Add indentation guides even on blank lines
+		"lukas-reineke/indent-blankline.nvim",
+		-- See `:help ibl`
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+	},
 	-- MARLENE add new plugins right above this line
 }, { ---@diagnostic disable-line: missing-fields
 	ui = {
