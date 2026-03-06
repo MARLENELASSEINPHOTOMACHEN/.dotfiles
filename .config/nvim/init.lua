@@ -1311,6 +1311,30 @@ require("lazy").setup({
 			bg_y_padding = 41,
 		},
 	},
+	{ -- small qol things but like lazygit for now
+		"folke/snacks.nvim",
+		---@type snacks.Config
+		opts = {
+			lazygit = {
+				configure = false, -- don't override lazygit's own theme with neovim colorscheme
+			},
+			styles = {
+				lazygit = {
+					border = "rounded",
+					backdrop = 80,
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>gg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit",
+			},
+		},
+	},
 
 	-- MARLENE add new plugins right above this line
 }, { ---@diagnostic disable-line: missing-fields
