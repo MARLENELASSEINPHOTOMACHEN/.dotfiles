@@ -21,5 +21,22 @@
     "use_system_clipboard": "always",
     "use_smartcase_find": true
   },
-  "vertical_scroll_margin": 10
+  "vertical_scroll_margin": 10,
+  "current_line_highlight": "line",
+  "indent_guides": {
+    "enabled": true,
+    "line_width": 1,
+    "active_line_width": 1,
+    "coloring": "indent_aware"
+  },
+  "scrollbar": {
+    "show": "auto",
+    "git_diff": true,
+    "search_results": true,
+    "diagnostics": true
+  },
+  "terminal": {
+    "font_family": "Belinsky",
+    "font_size": 15
+  }
 }

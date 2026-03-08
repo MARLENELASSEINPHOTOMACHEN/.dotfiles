@@ -10,13 +10,13 @@
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
-    }
+    },
   },
   {
     "context": "Editor",
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
-    }
+    },
   },
   {
     "context": "VimControl && !menu",
@@ -50,8 +50,8 @@
       "g O": "outline::Toggle",
 
       // gW -> Workspace Symbols (like telescope lsp_dynamic_workspace_symbols)
-      "g W": "project_symbols::Toggle"
-    }
+      "g W": "project_symbols::Toggle",
+    },
   },
   {
     "context": "vim_mode == normal && !menu",
@@ -60,7 +60,7 @@
 
       // === Git Hunk Navigation (like ]h / [h in Neovim) ===
       "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPrevHunk",
+      "[ h": "editor::GoToPreviousHunk",
 
       // === Git Blame Toggle (like <leader>tb) ===
       "space t b": "editor::ToggleGitBlame",
@@ -104,23 +104,26 @@
       "space c f": "editor::Format",
       "space c w": "workspace::SaveWithoutFormat",
       "space r n": "editor::Rename",
-      "space c a": "editor::ToggleCodeActions"
+      "space c a": "editor::ToggleCodeActions",
+
+      // <leader>gf -> Git File History
+      "space g f": "git::FileHistory",
 
       // "shift-y": ["workspace::SendKeystrokes", "y $"] // Use neovim's yank behavior: yank to end of line.
-    }
+    },
   },
   {
     "context": "vim_mode == insert",
     "bindings": {
       // "j k": "vim::NormalBefore" // In insert mode, make jk escape to normal mode.
-    }
+    },
   },
   {
     "context": "EmptyPane || SharedScreen",
     "bindings": {
       // Put key bindings here (in addition to the context above) if you want them to
       // work when no editor exists.
-      "space s f": "file_finder::Toggle"
-    }
-  }
+      "space s f": "file_finder::Toggle",
+    },
+  },
 ]
