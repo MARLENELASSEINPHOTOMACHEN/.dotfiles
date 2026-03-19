@@ -478,7 +478,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
 			vim.keymap.set("n", "<leader>sm", builtin.git_status, { desc = "[S]earch [M]odified files (git status)" }) --MARLENE
-			vim.keymap.set("n", "<leader>gf", builtin.git_bcommits, { desc = "[G]it Current [F]ile History" }) --MARLENE
+			-- vim.keymap.set("n", "<leader>gf", builtin.git_bcommits, { desc = "[G]it Current [F]ile History" }) --MARLENE
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 			-- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
@@ -581,7 +581,6 @@ require("lazy").setup({
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
-
 		},
 		config = function()
 			-- Brief aside: **What is LSP?**
@@ -1313,6 +1312,7 @@ require("lazy").setup({
 		"folke/snacks.nvim",
 		---@type snacks.Config
 		opts = {
+			picker = { enabled = true },
 			lazygit = {
 				configure = false, -- don't override lazygit's own theme with neovim colorscheme
 			},
@@ -1331,9 +1331,15 @@ require("lazy").setup({
 				end,
 				desc = "Lazygit",
 			},
+			{
+				"<leader>gf",
+				function()
+					Snacks.picker.git_log_file()
+				end,
+				desc = "[G]it [F]ile History ",
+			}, --MARLENE remember to disable telescope binding
 		},
 	},
-
 	-- MARLENE add new plugins right above this line
 }, { ---@diagnostic disable-line: missing-fields
 	ui = {
