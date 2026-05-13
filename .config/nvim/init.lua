@@ -101,6 +101,8 @@ do
   -- Set to true if you have a Nerd Font installed and selected in the terminal
   vim.g.have_nerd_font = false
 
+  vim.o.background = 'light' --MARLENE
+
   -- [[ Setting options ]]
   --  See `:help vim.o`
   -- NOTE: You can change these options as you wish!
@@ -383,18 +385,27 @@ do
   -- change the command under that to load whatever the name of that colorscheme is.
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  vim.pack.add { gh 'folke/tokyonight.nvim' }
-  ---@diagnostic disable-next-line: missing-fields
-  require('tokyonight').setup {
-    styles = {
-      comments = { italic = false }, -- Disable italics in comments
-    },
-  }
+  -- vim.pack.add { gh 'folke/tokyonight.nvim' } --MARLENE commented, using seoul256
+  -- ---@diagnostic disable-next-line: missing-fields
+  -- require('tokyonight').setup {
+  --   styles = {
+  --     comments = { italic = false }, -- Disable italics in comments
+  --   },
+  -- }
+  vim.pack.add { gh 'junegunn/seoul256.vim' } --MARLENE
 
   -- Load the colorscheme here.
-  -- Like many other themes, this one has different styles, and you could load
-  -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  vim.cmd.colorscheme 'tokyonight-night'
+  vim.cmd.colorscheme 'seoul256-light' --MARLENE
+
+  --MARLENE highlight link overrides
+  vim.cmd 'highlight! link @variable Normal'
+  vim.cmd 'highlight! link @keyword.exception Exception'
+  vim.cmd 'highlight! link @keyword.conditional Conditional'
+  vim.cmd 'highlight! link @keyword.repeat Repeat'
+  vim.cmd 'highlight! link @keyword.return Statement'
+  vim.cmd 'highlight! link @keyword.operator Operator'
+  -- vim.cmd 'highlight! link @keyword.import Special'
+  -- vim.cmd 'highlight! link @type.typescript Normal'
 
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
