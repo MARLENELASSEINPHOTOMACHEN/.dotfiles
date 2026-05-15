@@ -801,6 +801,7 @@ do
   local ensure_installed = vim.tbl_keys(servers or {})
   vim.list_extend(ensure_installed, {
     -- You can add other tools here that you want Mason to install
+    'prettierd', --MARLENE
   })
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -843,6 +844,13 @@ do
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { 'prettierd', 'prettier', stop_after_first = true }, --MARLENE
+      typescript = { 'prettierd', 'prettier', stop_after_first = true }, --MARLENE
+      html = { 'prettierd', 'prettier', stop_after_first = true }, --MARLENE
+      css = { 'prettierd', 'prettier', stop_after_first = true }, --MARLENE
+      scss = { 'prettierd', 'prettier', stop_after_first = true }, --MARLENE
+      astro = { 'prettierd', 'prettier' }, --MARLENE
+      svelte = { 'prettierd', 'prettier' }, --MARLENE
     },
   }
 
