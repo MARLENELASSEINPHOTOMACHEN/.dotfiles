@@ -814,6 +814,10 @@ do
     vim.lsp.config(name, server)
     vim.lsp.enable(name)
   end
+
+  -- Gleam LSP (not managed by Mason - comes with the gleam binary) --MARLENE
+  vim.lsp.config('gleam', {}) --MARLENE
+  vim.lsp.enable 'gleam' --MARLENE
 end
 
 -- ============================================================
@@ -855,6 +859,7 @@ do
       scss = { 'prettierd', 'prettier', stop_after_first = true }, --MARLENE
       astro = { 'prettierd', 'prettier' }, --MARLENE
       svelte = { 'prettierd', 'prettier' }, --MARLENE
+      gleam = { 'gleam' }, --MARLENE
     },
   }
 
