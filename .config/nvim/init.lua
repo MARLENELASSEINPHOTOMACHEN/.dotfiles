@@ -1192,5 +1192,32 @@ do
 	require("ibl").setup({})
 end
 
+do
+	-- [[ harpoon — quick access to files ]]
+	-- Depends on plenary.nvim (already installed in Section 4 for telescope).
+	vim.pack.add({ { src = gh("ThePrimeagen/harpoon"), version = "harpoon2" } })
+
+	local harpoon = require("harpoon")
+	harpoon:setup({
+		settings = {
+			save_on_toggle = true,
+			sync_on_ui_close = true,
+		},
+	})
+
+	vim.keymap.set("n", "<leader>H", function()
+		harpoon:list():add()
+	end, { desc = "[H]arpoon file" })
+	vim.keymap.set("n", "<leader>h", function()
+		harpoon.ui:toggle_quick_menu(harpoon:list())
+	end, { desc = "[H]arpoon Quick Menu" })
+	-- Set <space>1..<space>5 be my shortcuts to moving to the files
+	for _, idx in ipairs({ 1, 2, 3, 4, 5 }) do
+		vim.keymap.set("n", string.format("<leader>%d", idx), function()
+			harpoon:list():select(idx)
+		end, { desc = string.format("Harpoon file no. %d", idx) })
+	end
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
