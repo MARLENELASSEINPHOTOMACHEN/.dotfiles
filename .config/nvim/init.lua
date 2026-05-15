@@ -845,7 +845,8 @@ do
     },
   }
 
-  vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>cf', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' }) --MARLENE
+  vim.keymap.set({ 'n', 'v' }, '<leader>cw', '<cmd>noautocmd w<cr>', { desc = '[W]rite without formatting' }) --MARLENE
 end
 
 -- ============================================================
