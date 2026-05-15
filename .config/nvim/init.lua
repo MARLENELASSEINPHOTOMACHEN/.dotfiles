@@ -506,6 +506,9 @@ do
 	--MARLENE start custom mini plugins
 	require("mini.pairs").setup()
 
+	-- Icons (used by oil.nvim and others); comes bundled with mini.nvim
+	require("mini.icons").setup()
+
 	-- Highlight colors in code
 	local hipatterns = require("mini.hipatterns")
 	hipatterns.setup({
@@ -1150,6 +1153,36 @@ do
 			section_separators = { left = "", right = "" },
 		},
 	})
+end
+
+do
+	-- [[ oil — text-like editable file browser ]]
+	-- Depends on mini.icons (set up in Section 3 mini block).
+	vim.pack.add({ gh("stevearc/oil.nvim") })
+	require("oil").setup({
+		-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+		delete_to_trash = true,
+		constrain_cursor = "name",
+		view_options = {
+			-- Show files and directories that start with "."
+			show_hidden = false,
+		},
+		keymaps = {
+			["<C-h>"] = false,
+			["<C-l>"] = false,
+		},
+		float = {
+			padding = 2,
+			max_width = 0.6,
+			max_height = 0.8,
+			border = "rounded",
+			preview_split = "auto",
+		},
+	})
+	-- Open parent directory in current window
+	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+	-- Open parent directory in floating window
+	vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Open parent directory floating" })
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
