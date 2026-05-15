@@ -743,6 +743,10 @@ do
     --
     -- But for many setups, the LSP (`ts_ls`) will work just fine
     -- ts_ls = {},
+    ts_ls = {}, --MARLENE
+    html = {}, --MARLENE
+    cssls = {}, --MARLENE
+    zls = {}, --MARLENE
 
     stylua = {}, -- Used to format Lua code
 
