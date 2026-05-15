@@ -488,6 +488,8 @@ do
   --  Check out: https://github.com/nvim-mini/mini.nvim
 
   --MARLENE start custom mini plugins
+  require('mini.pairs').setup()
+
   --MARLENE end custom mini plugins
 end
 
