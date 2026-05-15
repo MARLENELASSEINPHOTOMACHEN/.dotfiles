@@ -471,18 +471,18 @@ do
   -- - sr)'  - [S]urround [R]eplace [)] [']
   require('mini.surround').setup()
 
-  -- Simple and easy statusline.
+  -- Simple and easy statusline. --MARLENE commented, using lualine (Section 9)
   --  You could remove this setup call if you don't like it,
   --  and try some other statusline plugin
-  local statusline = require 'mini.statusline'
+  -- local statusline = require 'mini.statusline'
   -- Set `use_icons` to true if you have a Nerd Font
-  statusline.setup { use_icons = vim.g.have_nerd_font }
+  -- statusline.setup { use_icons = vim.g.have_nerd_font }
 
   -- You can configure sections in the statusline by overriding their
   -- default behavior. For example, here we set the section for
   -- cursor location to LINE:COLUMN
   ---@diagnostic disable-next-line: duplicate-set-field
-  statusline.section_location = function() return '%2l:%-2v' end
+  -- statusline.section_location = function() return '%2l:%-2v' end
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
@@ -1057,7 +1057,40 @@ end
 -- Any unavoidable customizations outside this section are marked with --MARLENE.
 -- ============================================================
 do
+  -- [[ lualine — statusline, replaces mini.statusline ]]
+  vim.pack.add { gh 'nvim-lualine/lualine.nvim' }
 
+  local seoul256_light = require 'lualine.themes.seoul256'
+
+  -- Change the background of lualine_c section for normal mode
+  -- seoul256_light.normal.c.bg = '#FFBFBD' -- krank geiles corall
+  seoul256_light.normal.c.bg = '#FFFFDF'
+  seoul256_light.normal.b.bg = '#E09B99'
+  seoul256_light.insert.b.bg = '#E09B99'
+  seoul256_light.visual.b.bg = '#BCDDBD'
+  seoul256_light.visual.b.fg = '#808080'
+  seoul256_light.replace.b.bg = '#BCDDBD'
+  seoul256_light.replace.b.fg = '#808080'
+
+  seoul256_light.inactive.c.bg = '#D1D0D1'
+  seoul256_light.inactive.c.fg = '#4B4B4B'
+  -- löppt: vielleicht in variable thx
+  seoul256_light.normal.a.fg = '#D9D9D9'
+  seoul256_light.visual.a.fg = '#D9D9D9'
+  seoul256_light.insert.a.fg = '#D9D9D9'
+  seoul256_light.replace.a.fg = '#D9D9D9'
+
+  require('lualine').setup {
+    options = {
+      icons_enabled = vim.g.have_nerd_font,
+      -- theme = 'auto',
+      theme = seoul256_light,
+      -- component_separators = '|',
+      -- section_separators = '',
+      component_separators = '',
+      section_separators = { left = '', right = '' },
+    },
+  }
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
