@@ -1185,5 +1185,12 @@ do
 	vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "Open parent directory floating" })
 end
 
+do
+	-- [[ indent-blankline — indentation guides on blank lines ]]
+	-- See `:help ibl`
+	vim.pack.add({ gh("lukas-reineke/indent-blankline.nvim") })
+	require("ibl").setup({})
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
