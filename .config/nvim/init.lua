@@ -486,6 +486,9 @@ do
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
+
+  --MARLENE start custom mini plugins
+  --MARLENE end custom mini plugins
 end
 
 -- ============================================================
