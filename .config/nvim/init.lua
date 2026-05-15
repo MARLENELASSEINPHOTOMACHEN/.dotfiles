@@ -490,6 +490,14 @@ do
   --MARLENE start custom mini plugins
   require('mini.pairs').setup()
 
+  -- Highlight colors in code
+  local hipatterns = require 'mini.hipatterns'
+  hipatterns.setup {
+    highlighters = {
+      hex_color = hipatterns.gen_highlighter.hex_color(),
+    },
+  }
+
   --MARLENE end custom mini plugins
 end
 
