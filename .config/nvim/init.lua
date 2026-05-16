@@ -1219,5 +1219,18 @@ do
 	end
 end
 
+-- do
+-- 	-- [[ tiny-inline-diagnostic — inline diagnostics ]]
+-- 	-- Requires `virtual_text = false` on vim.diagnostic.config (handled in Section 1).
+-- 	vim.pack.add({ gh("rachartier/tiny-inline-diagnostic.nvim") })
+-- 	require("tiny-inline-diagnostic").setup({
+-- 		options = {
+-- 			multilines = {
+-- 				enabled = true,
+-- 			},
+-- 		},
+-- 	})
+-- end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
