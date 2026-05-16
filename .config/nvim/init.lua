@@ -1287,5 +1287,31 @@ do
 	end, { desc = "[S]ave selected [c]ode snapshot in ~/Desktop" })
 end
 
+do
+	-- [[ snacks — small qol things but like lazygit for now ]]
+	vim.pack.add({ gh("folke/snacks.nvim") })
+
+	---@type snacks.Config
+	require("snacks").setup({
+		picker = { enabled = true },
+		lazygit = {
+			configure = false, -- don't override lazygit's own theme with neovim colorscheme
+		},
+		styles = {
+			lazygit = {
+				border = "rounded",
+				backdrop = 80,
+			},
+		},
+	})
+
+	vim.keymap.set("n", "<leader>gg", function()
+		Snacks.lazygit()
+	end, { desc = "Lazygit" })
+	vim.keymap.set("n", "<leader>gf", function()
+		Snacks.picker.git_log_file()
+	end, { desc = "[G]it [F]ile History " }) --MARLENE remember to disable telescope binding
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
