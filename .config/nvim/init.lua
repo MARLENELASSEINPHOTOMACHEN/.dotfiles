@@ -1241,5 +1241,51 @@ do
 	require("render-markdown").setup({})
 end
 
+do
+	-- [[ codesnap — pretty code snapshots ]]
+	vim.pack.add({ gh("mistricky/codesnap.nvim") })
+
+	require("codesnap").setup({
+		show_line_number = true,
+		snapshot_config = {
+			code_config = {
+				font_family = "Belinsky Nerd Font",
+				-- font_family = "CaskaydiaCove Nerd Font",
+				breadcrumbs = {
+					enable = true,
+					font_family = "Belinsky Nerd Font",
+				},
+			},
+			watermark = { content = "" },
+			window = {
+				margin = { x = 61, y = 41 },
+			},
+			background = {
+				start = { x = 0, y = 0 },
+				["end"] = { x = "max", y = "max" },
+				stops = {
+					{ position = 0, color = "#EBECB2" },
+					{ position = 0.28, color = "#F3B0F7" },
+					{ position = 0.73, color = "#92B5F0" },
+					{ position = 0.94, color = "#AEF0F8" },
+				},
+			},
+		},
+	})
+
+	-- TODO: still "<Esc><cmd>CodeSnap<cr>" is a workaround for <Esc><cmd>CodeSnap<cr> delete when fixed
+	vim.keymap.set({ "x", "v" }, "<leader>cc", "<Esc><cmd>CodeSnap<cr>", {
+		desc = "Save selected [c]ode snapshot into [c]lipboard",
+	})
+	-- Broken in codesnap v2.0.1: main.save reads a stale `static.config.save_path` and
+	-- references an undefined local — errors before reaching the generator. Re-test on upgrade.
+	vim.keymap.set({ "x", "v" }, "<leader>cs", function()
+		vim.api.nvim_input("<Esc>")
+		vim.schedule(function()
+			require("codesnap").save(vim.fn.expand("~/Desktop/codesnap-" .. os.date("%Y%m%d-%H%M%S") .. ".png"))
+		end)
+	end, { desc = "[S]ave selected [c]ode snapshot in ~/Desktop" })
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
