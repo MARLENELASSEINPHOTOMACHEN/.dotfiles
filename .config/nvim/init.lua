@@ -1232,5 +1232,14 @@ end
 -- 	})
 -- end
 
+do
+	-- [[ render-markdown — render markdown files ]]
+	-- Depends on nvim-treesitter (Section 8) and mini.nvim (Section 3) — both already installed.
+	vim.pack.add({ gh("MeanderingProgrammer/render-markdown.nvim") })
+	---@module 'render-markdown'
+	---@type render.md.UserConfig
+	require("render-markdown").setup({})
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
