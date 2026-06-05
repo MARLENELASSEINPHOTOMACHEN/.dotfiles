@@ -118,3 +118,6 @@ nvm() {
 
 # Vim muscle memory
 alias :q='exit'
+
+# Copy current directory to clipboard (no trailing newline)
+alias ppwd='printf "%s" "$PWD" | pbcopy'
