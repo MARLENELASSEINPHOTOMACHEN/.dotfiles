@@ -367,7 +367,8 @@ do
 	-- See `:help gitsigns` to understand what each configuration key does.
 	-- Adds git related signs to the gutter, as well as utilities for managing changes
 	vim.pack.add({ gh("lewis6991/gitsigns.nvim") })
-	require("gitsigns").setup({
+	local gitsigns = require("gitsigns")
+	gitsigns.setup({
 		signs = {
 			add = { text = "+" }, ---@diagnostic disable-line: missing-fields
 			change = { text = "~" }, ---@diagnostic disable-line: missing-fields
@@ -376,37 +377,38 @@ do
 			changedelete = { text = "~" }, ---@diagnostic disable-line: missing-fields
 		},
 		on_attach = function(bufnr) --MARLENE start gitsigns keymaps
-			local gitsigns = require("gitsigns")
-
-			local function map(mode, l, r, opts)
-				opts = opts or {}
-				opts.buffer = bufnr
-				vim.keymap.set(mode, l, r, opts)
-			end
-
 			-- Navigation
-			map("n", "]c", function()
+			vim.keymap.set("n", "]c", function()
 				if vim.wo.diff then
 					vim.cmd.normal({ "]c", bang = true })
 				else
 					gitsigns.nav_hunk("next")
 				end
-			end, { desc = "Jump to next git [c]hange" })
+			end, { desc = "Jump to next git [c]hange", buffer = bufnr })
 
-			map("n", "[c", function()
+			vim.keymap.set("n", "[c", function()
 				if vim.wo.diff then
 					vim.cmd.normal({ "[c", bang = true })
 				else
 					gitsigns.nav_hunk("prev")
 				end
-			end, { desc = "Jump to previous git [c]hange" })
+			end, { desc = "Jump to previous git [c]hange", buffer = bufnr })
 
 			-- Toggles
-			map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle git show [b]lame line" })
-			map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "[T]oggle git intra-line [w]ord diff" })
-
+			vim.keymap.set(
+				"n",
+				"<leader>tb",
+				gitsigns.toggle_current_line_blame,
+				{ desc = "[T]oggle git show [b]lame line", buffer = bufnr }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>tw",
+				gitsigns.toggle_word_diff,
+				{ desc = "[T]oggle git intra-line [w]ord diff", buffer = bufnr }
+			)
 			-- Text object
-			map({ "o", "x" }, "ih", gitsigns.select_hunk)
+			vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr })
 		end, --MARLENE end gitsigns keymaps
 	})
 
