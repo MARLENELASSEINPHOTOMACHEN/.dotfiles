@@ -430,7 +430,7 @@ do
 				{ "o", "x" },
 				"ih",
 				gitsigns.select_hunk,
-				{ desc = "text object [i]nside [h]uhk", buf = bufnr }
+				{ desc = "text object [i]nside [h]unk", buf = bufnr }
 			)
 		end,
 	})
