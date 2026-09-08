@@ -1092,6 +1092,11 @@ do
 	---@param buf integer
 	---@param language string
 	local function treesitter_try_attach(buf, language)
+		-- Check if the buffer is valid (might not be after install completes)
+		if not vim.api.nvim_buf_is_valid(buf) then
+			return
+		end
+
 		-- Check if a parser exists and load it
 		if not vim.treesitter.language.add(language) then
 			return
