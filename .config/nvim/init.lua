@@ -837,7 +837,7 @@ do
 		--
 		-- But for many setups, the LSP (`rust_analyzer`) will work just fine
 		-- rust_analyzer = {},
-		ts_ls = {}, --MARLENE
+		tsc = {}, --MARLENE
 		html = {}, --MARLENE
 		cssls = {}, --MARLENE
 		zls = {}, --MARLENE
