@@ -331,6 +331,11 @@ do
 			end
 		end,
 	})
+
+	-- Update all plugins. Opens a confirmation buffer: `:w` to apply the updates, `:q` to discard.
+	vim.keymap.set("n", "<leader>pu", function()
+		vim.pack.update()
+	end, { desc = "[P]lugins [U]pdate" }) --MARLENE
 end
 
 --- Because most plugins are hosted on GitHub, you can use the helper
@@ -447,6 +452,7 @@ do
 			{ "<leader>s", group = "[S]earch", mode = { "n", "v" } },
 			{ "<leader>t", group = "[T]oggle" },
 			{ "<leader>g", group = "[G]it", mode = { "n", "v" } }, --MARLENE
+			{ "<leader>p", group = "[P]lugins" }, --MARLENE
 			{ "gr", group = "LSP Actions", mode = { "n" } },
 		},
 	})
