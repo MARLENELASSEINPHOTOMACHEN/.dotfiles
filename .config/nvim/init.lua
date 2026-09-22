@@ -448,6 +448,7 @@ do
 			{ "<leader>t", group = "[T]oggle" },
 			{ "<leader>g", group = "[G]it", mode = { "n", "v" } }, --MARLENE
 			{ "<leader>p", group = "[P]lugins" }, --MARLENE
+			{ "<leader>y", group = "[Y]ank" }, --MARLENE
 			{ "gr", group = "LSP Actions", mode = { "n" } },
 		},
 	})
@@ -1162,6 +1163,25 @@ do
 	vim.keymap.set("n", "<leader>pu", function()
 		vim.pack.update()
 	end, { desc = "[P]lugins [U]pdate" })
+
+	-- Copy the path of the current file to the system clipboard
+	--  See `:help filename-modifiers`
+	local function yank_path(modifier)
+		local path = vim.fn.expand("%" .. modifier)
+		if path == "" then
+			vim.notify("Buffer has no file path", vim.log.levels.WARN)
+			return
+		end
+		vim.fn.setreg("+", path)
+		vim.notify("Copied: " .. path)
+	end
+
+	vim.keymap.set("n", "<leader>yp", function()
+		yank_path(":.")
+	end, { desc = "[Y]ank relative [p]ath" })
+	vim.keymap.set("n", "<leader>yP", function()
+		yank_path(":p")
+	end, { desc = "[Y]ank full [P]ath" })
 end
 
 do
