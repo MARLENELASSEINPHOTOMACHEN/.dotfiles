@@ -331,11 +331,6 @@ do
 			end
 		end,
 	})
-
-	-- Update all plugins. Opens a confirmation buffer: `:w` to apply the updates, `:q` to discard.
-	vim.keymap.set("n", "<leader>pu", function()
-		vim.pack.update()
-	end, { desc = "[P]lugins [U]pdate" }) --MARLENE
 end
 
 --- Because most plugins are hosted on GitHub, you can use the helper
@@ -1159,6 +1154,16 @@ end
 -- All manually added plugins and tweaks in one place - keep above as clean as possible.
 -- Any unavoidable customizations outside this section are marked with --MARLENE.
 -- ============================================================
+do
+	-- [[ custom keymaps ]]
+	-- which-key groups for the prefixes used here live in the which-key spec (Section 4).
+
+	-- Update all plugins. Opens a confirmation buffer: `:w` to apply the updates, `:q` to discard.
+	vim.keymap.set("n", "<leader>pu", function()
+		vim.pack.update()
+	end, { desc = "[P]lugins [U]pdate" })
+end
+
 do
 	-- [[ lualine — statusline, replaces mini.statusline ]]
 	vim.pack.add({ gh("nvim-lualine/lualine.nvim") })
