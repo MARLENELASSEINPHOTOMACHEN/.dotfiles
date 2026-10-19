@@ -1185,6 +1185,37 @@ do
 end
 
 do
+	-- [[ stylua — kickstart's .stylua.toml, inlined to keep this a one-file config ]]
+	-- Extends the `stylua` server from Section 6. Its CLI flags override any .stylua.toml,
+	-- so they are only passed for files in this config dir; other projects keep their own style.
+	local config_dir = vim.fn.stdpath("config")
+	local style_flags = {
+		"--column-width=160",
+		"--line-endings=Unix",
+		"--indent-type=Spaces",
+		"--indent-width=2",
+		"--quote-style=AutoPreferSingle",
+		"--call-parentheses=None",
+		"--collapse-simple-statement=Always",
+	}
+	vim.lsp.config("stylua", {
+		root_dir = function(bufnr, on_dir)
+			if vim.fs.relpath(config_dir, vim.api.nvim_buf_get_name(bufnr)) then
+				return on_dir(config_dir)
+			end
+			on_dir(vim.fs.root(bufnr, { ".stylua.toml", "stylua.toml", ".editorconfig" }))
+		end,
+		cmd = function(dispatchers, config)
+			local cmd = { "stylua", "--lsp" }
+			if config.root_dir == config_dir then
+				vim.list_extend(cmd, style_flags)
+			end
+			return vim.lsp.rpc.start(cmd, dispatchers, { cwd = config.root_dir })
+		end,
+	})
+end
+
+do
 	-- [[ lualine — statusline, replaces mini.statusline ]]
 	vim.pack.add({ gh("nvim-lualine/lualine.nvim") })
 
