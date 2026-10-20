@@ -1315,7 +1315,8 @@ do
 
   ---@type snacks.Config
   require('snacks').setup {
-    picker = { enabled = true },
+    -- keep kickstart's telescope-ui-select (Section 5) as vim.ui.select; snacks would override it on UIEnter
+    picker = { ui_select = false },
     lazygit = {
       configure = false, -- don't override lazygit's own theme with neovim colorscheme
     },
