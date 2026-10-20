@@ -1328,7 +1328,8 @@ do
   }
 
   vim.keymap.set('n', '<leader>gg', function() Snacks.lazygit() end, { desc = 'Lazygit' })
-  vim.keymap.set('n', '<leader>gf', function() Snacks.picker.git_log_file() end, { desc = '[G]it [F]ile History ' }) --MARLENE remember to disable telescope binding
+  -- confirm defaults to `git checkout <sha> -- <file>`, which overwrites the working copy; only preview instead
+  vim.keymap.set('n', '<leader>gf', function() Snacks.picker.git_log_file { confirm = 'focus_preview' } end, { desc = '[G]it [F]ile History' })
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
