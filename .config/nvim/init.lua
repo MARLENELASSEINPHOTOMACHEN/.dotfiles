@@ -1219,7 +1219,12 @@ do
   -- [[ indent-blankline — indentation guides on blank lines ]]
   -- See `:help ibl`
   vim.pack.add { gh 'lukas-reineke/indent-blankline.nvim' }
-  require('ibl').setup {}
+  ---@module 'ibl'
+  ---@type ibl.config
+  require('ibl').setup {
+    -- with 'list' on, tab indents would use lcs-tab ("»") as the guide; match the space-indent guide instead
+    indent = { tab_char = '▎' },
+  }
 end
 
 do
