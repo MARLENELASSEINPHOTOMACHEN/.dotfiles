@@ -1302,15 +1302,13 @@ do
     },
   }
 
-  -- TODO: still "<Esc><cmd>CodeSnap<cr>" is a workaround for <Esc><cmd>CodeSnap<cr> delete when fixed
-  vim.keymap.set({ 'x', 'v' }, '<leader>cc', '<Esc><cmd>CodeSnap<cr>', {
+  -- codesnap reads the '< and '> marks, which are only set after leaving visual mode, hence the <Esc>
+  vim.keymap.set('x', '<leader>cc', '<Esc><cmd>CodeSnap<cr>', {
     desc = 'Save selected [c]ode snapshot into [c]lipboard',
   })
-  -- Broken in codesnap v2.0.1: main.save reads a stale `static.config.save_path` and
-  -- references an undefined local — errors before reaching the generator. Re-test on upgrade.
-  vim.keymap.set({ 'x', 'v' }, '<leader>cs', function()
-    vim.api.nvim_input '<Esc>'
-    vim.schedule(function() require('codesnap').save(vim.fn.expand('~/Desktop/codesnap-' .. os.date '%Y%m%d-%H%M%S' .. '.png')) end)
+  vim.keymap.set('x', '<leader>cs', function()
+    vim.cmd 'normal! \27' -- leave visual mode so '< and '> are set
+    vim.cmd.CodeSnapSave(vim.fn.expand('~/Desktop/codesnap-' .. os.date '%Y%m%d-%H%M%S' .. '.png'))
   end, { desc = '[S]ave selected [c]ode snapshot in ~/Desktop' })
 end
 
