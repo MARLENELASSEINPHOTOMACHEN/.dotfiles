@@ -1181,7 +1181,23 @@ do
       -- section_separators = '',
       component_separators = '',
       section_separators = { left = '', right = '' },
+      globalstatus = true, -- one statusline for all windows (laststatus=3)
     },
+    sections = {
+      -- default lualine_b, but `diff` reuses gitsigns' hunk counts instead of running its own `git diff`
+      lualine_b = {
+        'branch',
+        {
+          'diff',
+          source = function()
+            local gs = vim.b.gitsigns_status_dict
+            if gs then return { added = gs.added, modified = gs.changed, removed = gs.removed } end
+          end,
+        },
+        'diagnostics',
+      },
+    },
+    extensions = { 'oil', 'mason', 'quickfix', 'man' },
   }
 end
 
