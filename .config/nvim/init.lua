@@ -1208,6 +1208,8 @@ do
   require('oil').setup {
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
     delete_to_trash = true,
+    -- Re-render oil buffers when files in the directory change on disk (e.g. git branch switch)
+    watch_for_changes = true,
     constrain_cursor = 'name',
     view_options = {
       -- Show files and directories that start with "."
